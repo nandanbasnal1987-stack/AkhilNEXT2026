@@ -1,0 +1,30 @@
+<svg width="858" height="586" viewBox="0 0 858 586" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_581_5018)">
+<rect width="858" height="586" fill="white"/>
+<g style="mix-blend-mode:color-dodge">
+<rect width="858" height="586" fill="#090909"/>
+</g>
+<g style="mix-blend-mode:color-burn">
+<rect width="858" height="586" fill="#AEADEE"/>
+</g>
+<g filter="url(#filter0_f_581_5018)">
+<path d="M600.015 361.519C548.474 506.534 332.61 582.292 222.535 474.731C146.039 399.981 71.1552 297.899 183.396 203.669C276.554 119.246 327.567 22.5516 443.783 46.7902C578.112 74.8065 645.969 232.223 600.015 361.519Z" fill="#ADACED"/>
+<ellipse cx="695.038" cy="192.815" rx="54.0379" ry="51.8148" fill="#ADACED"/>
+<ellipse cx="560" cy="491" rx="41" ry="39" fill="#ADACED"/>
+<ellipse cx="370.053" cy="244.911" rx="54.0379" ry="51.8148" fill="#ADACED"/>
+<ellipse cx="577.069" cy="244.911" rx="54.0379" ry="51.8148" fill="#ADACED"/>
+<ellipse cx="163.038" cy="284.374" rx="54.0379" ry="51.8148" fill="#ADACED"/>
+<ellipse cx="251.667" cy="141.404" rx="54.0379" ry="51.8148" fill="#ADACED"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_581_5018" x="89.5923" y="23.5923" width="678.892" height="525.815" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="9.70386" result="effect1_foregroundBlur_581_5018"/>
+</filter>
+<clipPath id="clip0_581_5018">
+<rect width="858" height="586" fill="white"/>
+</clipPath>
+</defs>
+</svg>

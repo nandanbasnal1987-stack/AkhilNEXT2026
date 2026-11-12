@@ -1,0 +1,106 @@
+/* Diwali Decor: jhaalar + footer walker. Independent component, no dependencies. */
+
+/* ---------- Jhaalar (left and right) ---------- */
+.jh-root{--jh-u:clamp(7px,1.05vw,15px);--jh-z:30;position:fixed;inset:0;overflow:hidden;
+  pointer-events:none;z-index:var(--jh-z);font-size:var(--jh-u); z-index: 9999;}
+.jh-col{position:absolute;top:0;width:9em;height:100%}
+.jh-col.l{left:0}.jh-col.r{right:0}
+.jh-col::before{content:"";position:absolute;top:0;left:0;right:0;height:.5em;
+  background:linear-gradient(90deg,#8a5a12,#f6d77a 40%,#b07a1e);box-shadow:0 .2em .5em rgba(0,0,0,.35);
+  -webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
+.jh-col.r::before{transform:scaleX(-1)}
+.jh-p{position:absolute;top:.3em;width:3.2em;transform-origin:50% 0;will-change:transform}
+.jh-k,.jh-s{transform-origin:50% 0}
+.jh-s{filter:drop-shadow(0 .25em .3em rgba(0,0,0,.35));animation:jh-float var(--fd,6s) ease-in-out var(--fl,0s) infinite alternate}
+.jh-seg{position:relative;transform-origin:50% 0;will-change:transform;
+  animation:jh-sway var(--d,4s) ease-in-out var(--dl,0s) infinite alternate}
+.jh-seg>.jh-seg{position:absolute;top:100%;left:0;width:100%}
+.jh-seg svg{display:block;width:100%;height:auto;overflow:visible}
+.jh-halo{opacity:0;animation:jh-glow var(--gd,8s) ease-in-out var(--gl,0s) infinite}
+.jh-k.kick{animation:jh-kick 1.1s cubic-bezier(.2,.7,.3,1)}
+@keyframes jh-sway{from{transform:rotate(calc(var(--a,3deg) * -1))}to{transform:rotate(var(--a,3deg))}}
+@keyframes jh-float{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(0,.35em,0) scale(1.012)}}
+@keyframes jh-glow{0%,65%,100%{opacity:0}82%{opacity:.9}}
+@keyframes jh-kick{
+  0%{transform:rotate(0)}
+  18%{transform:rotate(calc(var(--kd) * var(--ka)))}
+  38%{transform:rotate(calc(var(--kd) * var(--ka) * -.65))}
+  58%{transform:rotate(calc(var(--kd) * var(--ka) * .38))}
+  78%{transform:rotate(calc(var(--kd) * var(--ka) * -.18))}
+  100%{transform:rotate(0)}}
+@media (max-width:1099px){.jh-p:nth-child(3){display:none}}
+
+/* ---------- Footer walker ---------- */
+.jh-lane{--cw:64px;--dh:30px;position:fixed;left:0;right:0;bottom:0;height:calc(var(--cw) * 1.375 + 44px + var(--dh));
+  max-height:100%;overflow:hidden;pointer-events:none;z-index:5}
+@media (max-width:640px){.jh-lane{--cw:50px;--dh:26px}}
+.jh-walker{position:absolute;left:0;bottom:calc(var(--dh) - 4px);width:var(--cw);will-change:transform}
+.jh-flip{transition:transform .4s cubic-bezier(.45,0,.2,1)}
+.jh-flip svg{display:block;width:100%;height:auto;overflow:visible}
+.jh-hit{position:absolute;inset:0;pointer-events:auto;cursor:pointer}
+.jh-bubble{position:absolute;left:0;bottom:calc(var(--cw) * 1.375 + var(--dh) + 4px);padding:6px 11px;border-radius:12px;
+  background:#fff8e6;color:#4a2a0a;border:1px solid #e8b04a;font:600 12px/1.3 system-ui,sans-serif;white-space:nowrap;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);opacity:0;transform:translateY(6px) scale(.92);
+  transition:opacity .25s,transform .25s;pointer-events:none}
+.jh-bubble.show{opacity:1;transform:none}
+.jh-bubble::after{content:"";position:absolute;bottom:-6px;left:var(--tail,20px);width:10px;height:10px;margin-left:-5px;
+  background:#fff8e6;border:solid #e8b04a;border-width:0 1px 1px 0;transform:rotate(45deg)}
+.jh-fx{position:absolute;bottom:calc(var(--dh) - 2px);pointer-events:none}
+.jh-dust{width:7px;height:7px;border-radius:50%;background:rgba(190,160,120,.55);animation:jh-dust .8s ease-out forwards}
+.jh-spark{width:9px;height:9px;background:#ffd36a;animation:jh-spark .9s ease-out forwards;
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+@keyframes jh-dust{from{opacity:.7;transform:translate(0,0) scale(.4)}to{opacity:0;transform:translate(var(--dx),-14px) scale(1.7)}}
+@keyframes jh-spark{from{opacity:1;transform:translate(0,0) scale(.5) rotate(0)}to{opacity:0;transform:translate(var(--dx),-22px) scale(1.1) rotate(90deg)}}
+
+/* Diyas along the bottom of the footer */
+.jh-diyas{position:absolute;left:0;right:0;bottom:0;height:var(--dh);display:flex;justify-content:space-evenly;align-items:flex-end}
+.jh-diya{width:calc(var(--dh) * 1.45);height:var(--dh)}
+.jh-diya svg{display:block;width:100%;height:100%;overflow:visible}
+.jh-dg{opacity:0}
+.jh-fl{transform-origin:20px 16px}
+.jh-diyas:not(.lit) .jh-fl{transform:scale(0)}
+.jh-diyas.lit .jh-fl{animation:jh-ignite .5s cubic-bezier(.3,1.6,.5,1) var(--ig) both,jh-flick var(--fk) ease-in-out calc(var(--ig) + .5s) infinite alternate}
+.jh-diyas.lit .jh-dg{animation:jh-gin .6s ease-out var(--ig) both,jh-dglow var(--gp) ease-in-out calc(var(--ig) + .6s) infinite alternate}
+.jh-diyas.lit .jh-diya.flare .jh-fl{animation:jh-flare .6s ease-out}
+@keyframes jh-ignite{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes jh-flick{from{transform:scale(1,1) skewX(-2deg)}to{transform:scale(.94,1.1) skewX(3deg)}}
+@keyframes jh-flare{0%{transform:scale(1)}30%{transform:scale(1.5,1.75)}100%{transform:scale(1)}}
+@keyframes jh-gin{from{opacity:0}to{opacity:.55}}
+@keyframes jh-dglow{from{opacity:.55}to{opacity:1}}
+
+/* Character parts (pivots are in SVG user units) */
+.c-legf{transform-origin:43.5px 76px}.c-legb{transform-origin:36.5px 76px}
+.c-armf{transform-origin:53px 52px}.c-armb{transform-origin:27px 52px}
+.c-head{transform-origin:40px 46px}.c-sh{transform-origin:40px 106px}
+.c-eyes{transform-box:fill-box;transform-origin:center;animation:c-blink 4.5s infinite}
+.is-walking .c-legf{animation:c-leg .8s ease-in-out infinite}
+.is-walking .c-legb{animation:c-leg .8s ease-in-out -.4s infinite}
+.is-walking .c-armf{animation:c-arm .8s ease-in-out infinite}
+.is-walking .c-armb{animation:c-arm .8s ease-in-out -.4s infinite}
+.is-walking .c-body{animation:c-bob .8s ease-in-out infinite}
+.is-walking .c-head{animation:c-head .8s ease-in-out infinite}
+.is-walking .c-sh{animation:c-sh .8s ease-in-out infinite}
+.is-paused .c-leg,.is-paused .c-armb,.is-paused .c-body,.is-paused .c-head,.is-paused .c-sh,
+.is-turning .c-leg,.is-turning .c-armb,.is-turning .c-armf,.is-turning .c-body,.is-turning .c-head,.is-turning .c-sh{animation-play-state:paused}
+.is-wave .c-armf{animation:c-raise .3s ease-out forwards,c-wave .45s ease-in-out .3s infinite alternate}
+@keyframes c-leg{0%{transform:rotate(-26deg)}25%{transform:rotate(0) translateY(-2px)}50%{transform:rotate(26deg)}75%{transform:rotate(0)}100%{transform:rotate(-26deg)}}
+@keyframes c-arm{0%,100%{transform:rotate(22deg)}50%{transform:rotate(-22deg)}}
+@keyframes c-bob{0%,50%,100%{transform:translateY(0)}25%,75%{transform:translateY(-2.2px)}}
+@keyframes c-head{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+@keyframes c-sh{0%,50%,100%{transform:scale(1)}25%,75%{transform:scale(.9)}}
+@keyframes c-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes c-raise{to{transform:rotate(-125deg)}}
+@keyframes c-wave{from{transform:rotate(-120deg)}to{transform:rotate(-165deg)}}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .jh-s,.jh-seg,.jh-halo,.jh-k.kick,.jh-walker *{animation:none!important}
+  .jh-halo{opacity:.25}
+  .jh-flip,.jh-bubble{transition:none}
+  .is-wave .c-armf{transform:rotate(-135deg)}
+  .jh-fx{display:none}
+  .jh-diyas .jh-fl,.jh-diyas .jh-dg{animation:none!important}
+  .jh-diyas .jh-dg{opacity:.7}
+}
+
+.jh-walker.is-walking { display: none;}
