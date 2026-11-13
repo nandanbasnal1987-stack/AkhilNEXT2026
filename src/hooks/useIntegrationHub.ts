@@ -68,12 +68,19 @@ function buildWirePath(node) {
  *   viewWidth: number,
  * }}
  */
-export function useIntegrationHub(opts = {}) {
+
+interface AnimationOptions {
+  stagger?: number;
+  baseDelay?: number;
+  chipBaseDelay?: number;
+}
+
+export function useIntegrationHub(opts: AnimationOptions = {}) {
   const {
     stagger = 0.12,
     baseDelay = 0.25,
     chipBaseDelay = 0.3,
-  } = opts;
+  } = opts && opts ;
 
   // Single boolean is enough for the "dim all wires" hover effect.
   // For per-chip highlighting, swap for `hotIndex` (see the notes below).
