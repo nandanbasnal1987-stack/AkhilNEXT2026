@@ -12,6 +12,19 @@ import FaqSection from "@/components/sections/FaqSection";
 import TransitionBanner from "@/components/sections/TransitionBanner";
 import ClinicComparison from "@/components/sections/ClinicComparison";
 
+import Hero from "@/app/integrations/Hero";
+import HubDiagram from "@/app/integrations/HubDiagram";
+import Marquee from "@/app/integrations/Marquee";
+
+import "../integrations/integrations.css"; 
+
+// In JS files, do NOT use "import type" or ": Metadata"
+export const metadata = {
+  title: "Augastam Clinic | Everything Connected. Care Coordinated.",
+  description:
+    "Connect your clinic's essential tools in one place, so your team can access the systems they need without constantly switching between apps.",
+};
+
 export default function AugastamClinicPage() {
   return (
     <>
@@ -28,6 +41,13 @@ export default function AugastamClinicPage() {
         <AiSuiteSection />
         <PrivacySection />
         <ClinicComparison />
+         <div className="integrations-main">
+          <div className="container">
+          <Hero />
+          <HubDiagram />
+          <Marquee />
+          </div>
+        </div>
         <ContactSection />
         <FaqSection />
       </main>
