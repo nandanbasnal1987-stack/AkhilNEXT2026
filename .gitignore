@@ -1,7 +1,9 @@
-node_modules
-.next
-out
+node_modules/
+.next/
+out/
+out.zip
+build/
+dist/
 .env
 .env.local
-.DS_Store
-out.zip
+*.logout.zip
