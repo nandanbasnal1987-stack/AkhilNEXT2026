@@ -1,6 +1,7 @@
 /* Diwali Decor: jhaalar + footer walker. Independent component, no dependencies. */
 
 /* ---------- Jhaalar (left and right) ---------- */
+
 .jh-root{--jh-u:clamp(7px,1.05vw,15px);--jh-z:30;position:fixed;inset:0;overflow:hidden;
   pointer-events:none;z-index:var(--jh-z);font-size:var(--jh-u); z-index: 9999;}
 .jh-col{position:absolute;top:0;width:9em;height:100%}
@@ -104,3 +105,6 @@
 }
 
 .jh-walker.is-walking { display: none;}
+
+.jh-root { display: none;}
+.jh-lane { display: none;}

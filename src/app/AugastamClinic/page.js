@@ -10,6 +10,7 @@ import PrivacySection from "@/components/sections/PrivacySection";
 import ContactSection from "@/components/sections/ContactSection";
 import FaqSection from "@/components/sections/FaqSection";
 import TransitionBanner from "@/components/sections/TransitionBanner";
+import IntegrationHub from "@/components/features/IntegrationHub";
 
 export default function AugastamClinicPage() {
   return (
@@ -26,6 +27,7 @@ export default function AugastamClinicPage() {
         <BenefitsSection />
         <AiSuiteSection />
         <PrivacySection />
+        <IntegrationHub />
         <ContactSection />
         <FaqSection />
       </main>

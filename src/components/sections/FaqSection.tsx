@@ -6,28 +6,28 @@ import { useFaq } from "@/hooks/useFaq";
 import "@/styles/faq.css";
 const faqs = [
   {
-    question: "What is the full form of EMR and EHR in healthcare?",
-    answer: "EMR stands for Electronic Medical Record and EHR stands for Electronic Health Record. Both are digital versions of a patient's health information, but they differ in how far that information travels.",
+    question: "What is Augastam Clinic?",
+    answer: "Augastam Clinic is a digital healthcare management platform developed by Akhil Systems Pvt. Ltd. It is designed to help clinics, doctors, and healthcare professionals manage their daily clinical operations through a modern, integrated digital system.",
   },
   {
-    question: "What is EHR?",
-    answer: "An Electronic Health Record is a patient's complete digital health history that can be shared across hospitals, clinics, labs and pharmacies, so every provider involved in the patient's care sees the same information.",
-  },
-  {
-    question: "What is EMR?",
-    answer: "An Electronic Medical Record is the digital chart a single clinic or hospital keeps for its own patients, including diagnoses, prescriptions, test results and visit notes. It replaces paper files inside one practice.",
+    question: "Is Augastam Clinic ABDM compliant?",
+    answer: "Akhil Systems has publicly stated that its healthcare solutions support ABDM integration and that the company has achieved ABDM M1, M2 and M3 certifications. However, I could not independently verify that the specific product Augastam Clinic has completed all ABDM certification requirements.",
   },
   {
     question: "Why are doctors opting for Augastam Clinic software, for patient and clinic management?",
-    answer: "Augastam Clinic brings registration, appointments, queues, consultations and billing into one connected system. Doctors and staff avoid repeating patient details, spend less time on notes, and get a clear view of daily clinic activity.",
+    answer: "Doctors are opting for Augastam Clinic because it helps simplify everyday clinical work, reduce administrative effort, organise patient information and make clinic operations more efficient.",
   },
   {
-    question: "What kind of data securities, Augastam Clinic uses to secure patients data?",
-    answer: "Replace this with your confirmed security details, such as encryption, role-based access, audit trails and backups.",
+    question: "Does Augastam Clinic follow NABH digital standards?",
+    answer: "Augastam Clinic can be positioned around NABH Digital Health Standards, but I cannot confirm that Augastam Clinic itself has received NABH CMS certification.",
   },
   {
-    question: "What are the minimum system requirements to run Augastam Clinic software?",
-    answer: "Replace this with your confirmed requirements, such as supported operating systems, browsers, memory and internet speed.",
+    question: "Which medical coding standards does it support?",
+    answer: "For Augastam Clinic by Akhil Systems, medical coding standards are important for accurate clinical documentation, consistent diagnosis recording, laboratory reporting and healthcare interoperability.",
+  },
+  {
+    question: "Does the AI replace the doctor?",
+    answer: "In Augastam Clinic, AI should be positioned as a clinical assistant that supports doctors, not as a replacement for their medical expertise, judgement or decision-making.",
   },
 ];
 

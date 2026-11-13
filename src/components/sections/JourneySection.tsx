@@ -17,7 +17,7 @@ export default function JourneySection() {
             One connected journey
           </span>
           <h1>
-            From the first click to the final follow-up
+            One platform. The complete patient journey
           </h1>
           <p className="sub">
             Augastam brings the everyday clinic journey into one connected flow, so every team member can work from the same patient context.
@@ -63,10 +63,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                Appointment
+                Consult
               </h3>
               <p>
-                Schedule visits and keep the day organized.
+                AI-assisted notes, voice to text and order sets
               </p>
             </div>
           </div>
@@ -76,10 +76,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                QMS
+                Bill & Pay
               </h3>
               <p>
-                See who is waiting and who is next.
+                Billing, invoices and online payment through the patient app
               </p>
             </div>
           </div>
@@ -89,10 +89,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                Billing
+                Diagnose
               </h3>
               <p>
-               Connect services, invoices and collections. 
+               Lab orders, smart lab reports, home sample collection workflow 
               </p>
             </div>
           </div>
@@ -102,10 +102,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                EMR
+                Follow up & Retain
               </h3>
               <p>
-                Capture the clinical story in one patient record.
+                Reminders, prescriptions on WhatsApp, immunisation schedules
               </p>
             </div>
           </div>

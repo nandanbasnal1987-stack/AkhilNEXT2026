@@ -128,7 +128,7 @@ html[data-theme="dark"] #section-5{
 #section-5 .tabs{
       position: relative;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 19px;
       max-width: 1049px;
       margin: 66px auto 0;

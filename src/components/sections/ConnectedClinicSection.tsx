@@ -88,7 +88,7 @@ export default function ConnectedClinicSection() {
               The problem
             </span>
             <h2 className="h1">
-              Your clinic is busy. Your systems shouldn't make it harder.
+              Running a clinic should not mean running behind
             </h2>
             <p className="sub">
               When registration, appointments, queue handling, clinical notes and billing live in disconnected processes, staff spend time switching systems instead of moving the patient journey forward.

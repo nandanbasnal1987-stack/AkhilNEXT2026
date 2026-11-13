@@ -16,13 +16,9 @@ export default function PatientAppSection() {
         <div className="canvas">
           <div className="copy">
             <h1>
-              360
-              <sup>
-                °
-              </sup>
-              {" "}
-              of Care Delivery via Patient App
+              Patient app: Higher retention, better experience
             </h1>
+            <p className="mt-3">Book appointments, Book video consultations, Book home sample collection, View records, Pay bills and Request refunds.</p>
             <ul id="sec6-list">
               <li data-go="0" data-hl="appt">
                 Appointment Management
@@ -31,20 +27,20 @@ export default function PatientAppSection() {
                 Video & Chat Consultation
               </li>
               <li data-go="0" data-hl="bell">
-                Secure Medical Records & Real Time Alerts
+               Review orders and pay for selected services in the app.
               </li>
               <li data-go="sec6-cats" data-hl="">
                 Medical Records at your fingertips
               </li>
               <li data-go="sec6-home" data-hl="home">
-                Home Healthcare based Services
+                Invoices, prescriptions, lab reports, vitals & diagnosis in one place.
               </li>
               <li data-go="0" data-hl="bell">
                 Smart Notifications
               </li>
             </ul>
           </div>
-          <button className="demo">
+          <button className="demo mt-4">
             Book a Demo Now
             {" "}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

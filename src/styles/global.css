@@ -125,7 +125,7 @@ button#sec2-btn * { color: #fff; font-size: 12px;}
 /* === Typing wrapper (new line) === */
 .typing-em {
   display: block;
-  min-height: 1em;
+  min-height: 1.1em;
   margin-top: 0.15em;
 }
 
@@ -163,3 +163,9 @@ button.try * {
 }
 
 .demo-modal-overlay { z-index: 9999;}
+
+
+
+
+
+

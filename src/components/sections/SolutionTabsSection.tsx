@@ -25,11 +25,17 @@ export default function SolutionTabsSection() {
           </button>
           {" "}
           <button className="tab" role="tab" aria-selected="false">
-            Appointment & Scheduling
+            Patient Engagement
           </button>
           {" "}
           <button className="tab" role="tab" aria-selected="false">
-            Patient Engagement
+            Appointment & Scheduling
+          </button>
+          <button className="tab" role="tab" aria-selected="false">
+            Multi Languages
+          </button>
+          <button className="tab" role="tab" aria-selected="false">
+          Digital Standards
           </button>
         </div>
         <div className="card">
@@ -246,6 +252,150 @@ export default function SolutionTabsSection() {
                 </div>                
               </div>
               <Image src="/images/Appointments_Scheduling.svg" alt="Akhil Systems logo" width={0} height={0} style={{ width: "auto", height: "auto" }} />
+            </div>
+          </div>
+
+          <div className="panel" role="tabpanel">
+            <h2>
+              80+ Languages: Document<br/> & Communicate in multi<br/> languages
+            </h2>
+            <ul>
+              <li><i></i> Multilingual OPD summary and prescription printouts. </li>
+              <li><i></i> Registration forms that adapt to national and international requirements. </li>
+              <li><i></i> Ideal for multilingual cities, medical tourism and international clinics.</li>
+            </ul>
+            <button className="try">
+              Try Now
+            </button>
+            <div className="right">
+              <p className="dr d-none">
+                Dr. Anusheel Singh
+              </p>
+              <div className="frame d-none">
+                <div className="inner">
+                  <h4>
+                    Patient engagement this month
+                  </h4>
+                  <div className="big" data-n="82" data-s="%">
+                    0
+                  </div>
+                  <div className="bars">
+                    <div className="bar" style={{ "--c": "#1f87ff", "--w": "82%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          App usage
+                        </span>
+                        <b>
+                          82%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                    <div className="bar" style={{ "--c": "#8a5cf0", "--w": "91%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          Reminders read
+                        </span>
+                        <b>
+                          91%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                    <div className="bar" style={{ "--c": "#f0ab0d", "--w": "64%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          Feedback given
+                        </span>
+                        <b>
+                          64%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>                
+              </div>
+              <Image src="/images/MultiLanguages.svg" alt="Akhil Systems logo" width={0} height={0} style={{ width: "auto", height: "auto" }} />
+            </div>
+          </div>
+
+
+          <div className="panel" role="tabpanel">
+            <h2>
+              ABDM and NABH Digital<br/> Standards, Built In
+            </h2>
+            <ul>
+              <li><i></i> ABDM-aligned workflows for the Indian digital health ecosystem. </li>
+              <li><i></i> NABH Platinum-level digital standards [confirm official name of the standard and level] </li>
+              <li><i></i> Role-based access restricted by role, specialty and authorisation level.</li>
+              <li><i></i> Encryption in transit (SSL) and at rest (AWS KMS, with bring-your-own-key support). </li>
+            </ul>
+            <button className="try">
+              Try Now
+            </button>
+            <div className="right">
+              <p className="dr d-none">
+                Dr. Anusheel Singh
+              </p>
+              <div className="frame d-none">
+                <div className="inner">
+                  <h4>
+                    Patient engagement this month
+                  </h4>
+                  <div className="big" data-n="82" data-s="%">
+                    0
+                  </div>
+                  <div className="bars">
+                    <div className="bar" style={{ "--c": "#1f87ff", "--w": "82%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          App usage
+                        </span>
+                        <b>
+                          82%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                    <div className="bar" style={{ "--c": "#8a5cf0", "--w": "91%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          Reminders read
+                        </span>
+                        <b>
+                          91%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                    <div className="bar" style={{ "--c": "#f0ab0d", "--w": "64%" } as CSSProperties}>
+                      <div>
+                        <span style={{ all: "unset" } as CSSProperties}>
+                          Feedback given
+                        </span>
+                        <b>
+                          64%
+                        </b>
+                      </div>
+                      <span>
+                        <i></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>                
+              </div>
+              <Image src="/images/DigitalStandards.svg" alt="Akhil Systems logo" width={0} height={0} style={{ width: "auto", height: "auto" }} />
             </div>
           </div>
         </div>

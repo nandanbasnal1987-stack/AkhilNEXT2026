@@ -1,7 +1,7 @@
 .section-1 .hero{
       position: relative;
       height: calc(100vh - 119px);
-      min-height: 760px;
+      min-height: 850px;
       overflow: hidden;
       background: #6b4f38;
       isolation: isolate;
@@ -83,11 +83,11 @@
       margin-top: 40px;
     }
 .section-1 .b1{
-      height: 49px;
+      height: 55px;
       padding: 0 25px;
-      background: #5aa9e8;
-      border: 1px solid #7bbdf0;
-      color: #10203a;
+      background: #0074BC;
+      border: 1px solid #58B6ED;
+      color: #ffffff;
       font: 700 18px Arial;
       border-radius: 5px;
       cursor: pointer;
@@ -95,15 +95,15 @@
     }
 .section-1 .b1:hover{
       transform: translateY(-3px);
-      background: #74b8ef;
+      background: #0074BC;
       box-shadow: 0 12px 26px rgba(90, 169, 232, 0.45);
     }
 .section-1 .b2{
-      height: 49px;
+      height: 55px;
       padding: 0 24px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      color: #8cc8ff;
+      background: rgba(255, 255, 255, 0);
+      border: 1px solid #58B6ED;
+      color: #0074BC;
       font: 18px Arial;
       border-radius: 5px;
       cursor: pointer;
@@ -153,6 +153,11 @@
       animation: sec1-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
       animation-delay: calc(var(--d) * 130ms);
     }
+
+     .section-1 h1.in { font-size: 65px;}
+    .section-1 h1.in em {
+    min-height: 1.1em;
+}
 @keyframes sec1-up{
       to {
         opacity: 1;
