@@ -96,7 +96,7 @@ export default function IntegrationHub() {
             {[0, 1].map((k) => (
               <div
                 key={k}
-                className="track"
+                className="track2"
                 aria-hidden={k === 1 ? "true" : undefined}
               >
                 {[...list, ...list].map((t, j) => (
