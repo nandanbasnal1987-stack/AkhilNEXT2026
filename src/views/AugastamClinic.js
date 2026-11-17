@@ -34,7 +34,7 @@ function Clinic() {
                 <p>Augastam connects scheduling, billing, and clinical workflows to simplify and accelerate every step of <br/>the patient journey.</p>
                 
             
-               <div style={{display: 'table', margin:'auto'}}><a href='/contact' className='getStared'>Get Started </a></div>
+               <div style={{display: 'table', margin:'auto'}}><a href='/contact' className='getStared' data-onboard data-onboard-source='clinic-view-hero'>Get Started </a></div>
 
 
               
@@ -223,7 +223,7 @@ function Clinic() {
                       <li>48-hour response time</li>
                     </ul>
 
-                    <a href='#'>Get Started</a>
+                    <a href='/contact' data-onboard data-onboard-source='clinic-view-card'>Get Started</a>
                     </div>
                     </div>
 
@@ -242,7 +242,7 @@ function Clinic() {
                       <li>Custom branding options</li>
                     </ul>
 
-                    <a href='#'>Get Started</a>
+                    <a href='/contact' data-onboard data-onboard-source='clinic-view-card'>Get Started</a>
                     </div>
                     </div>
 
@@ -260,7 +260,7 @@ function Clinic() {
                       <li>API access</li>
                     </ul>
 
-                    <a href='#'>Get Started</a>
+                    <a href='/contact' data-onboard data-onboard-source='clinic-view-card'>Get Started</a>
                     </div>
                     </div>
 

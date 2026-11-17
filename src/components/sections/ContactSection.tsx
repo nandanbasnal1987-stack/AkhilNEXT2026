@@ -40,7 +40,7 @@ export default function ContactSection() {
             billing and AI workflows.
           </p>
           <div className="btns">
-            <button className="btn p" id="sec12-demo" type="button">
+            <button className="btn p" id="sec12-demo" type="button" data-onboard data-onboard-source="clinic-contact">
               Book a Demo{" "}
               <span className="ar" aria-hidden="true">
                 →

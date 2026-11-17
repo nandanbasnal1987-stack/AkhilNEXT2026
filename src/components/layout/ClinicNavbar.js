@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import emailjs from "@emailjs/browser";               // <-- ADDED
 import ClinicMobileMenu from "@/components/layout/ClinicMobileMenu";
+import { LoginLink } from "@/onboarding/SignInLinks";
 import { useScrolled } from "@/hooks/useScrolled";
 import "@/styles/navbar.css";
 
@@ -254,11 +255,16 @@ export default function ClinicNavbar() {
               Pricing
             </Link>
           </li>
+          <li>
+            <a href="#" data-onboard-status data-onboard-source="clinic-header">
+              Track application
+            </a>
+          </li>
         </ul>
 
         <div className="cta">
-          <button type="button" className="login">Login</button>
-          <button type="button" className="demo" onClick={openDemo}>
+          <LoginLink className="login" source="clinic-header">Login</LoginLink>
+          <button type="button" className="demo" data-onboard data-onboard-source="clinic-navbar">
             Book a demo
           </button>
         </div>

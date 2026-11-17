@@ -13,6 +13,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import BodyClassManager from '@/components/BodyClassManager';
 import ClientInit from './ClientInit';
+import OnboardProvider from '@/onboarding/OnboardProvider';
 import { SITE_URL, SITE_NAME } from '@/lib/seo';
 
 export const metadata = {
@@ -46,13 +47,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
-        <div id="root">
-          <Topbar />
-          <Navbar />
-          <BodyClassManager />
-          {children}
-          <Footer />
-        </div>
+        <OnboardProvider>
+          <div id="root">
+            <Topbar />
+            <Navbar />
+            <BodyClassManager />
+            {children}
+            <Footer />
+          </div>
+        </OnboardProvider>
 
         <ClientInit />
 

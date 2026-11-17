@@ -12,6 +12,7 @@ const search = "/images/Search_icon.png";
 const language = "/images/language_icon.png";
 const callnumber = "/images/CallNumber.svg";
 import '../../styles/globalv2.css';
+import '../../styles/product-menu.css';
 // import '../../styles/responsive.css';
 import LanguageSwitcher from '../../components/features/LanguageSwitcher.js';
 const mocDetailsIcon = "/images/MOC.svg";
@@ -24,6 +25,7 @@ const HISProductLogo = "/images/Miracle_HIS_logo.svg";
 const MobilityProductLogo = "/images/Mobility_Solution_logo.svg";
 const callExpert = "/images/Call_icon.svg";
 import TalkToExpertModal from "../../components/features/TalkToExpertModal";
+import { LoginLink } from "@/onboarding/SignInLinks";
 
 function Navbar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -141,11 +143,11 @@ const [showModal, setShowModal] = useState(false);
                             <h6 className="dropdown-header">Product List</h6>
 
                             {/* 👇 Hover handlers */}
-                            <Link className="dropdown-item his-link" href="/MiracleHIS" onMouseEnter={() => setActiveProduct("miracleHIS")}>Miracle HMIS<span>Hospital Management Information Systems (HMIS)</span></Link>
+                            <Link className="dropdown-item his-link" href="/MiracleHIS" onMouseEnter={() => setActiveProduct("miracleHIS")} onFocus={() => setActiveProduct("miracleHIS")}>Miracle HMIS<span>Hospital Management Information Systems (HMIS)</span></Link>
                             <Link
                               className="moc-link dropdown-item"
                               href="/Moc"
-                              onMouseEnter={() => setActiveProduct("moc")}
+                              onMouseEnter={() => setActiveProduct("moc")} onFocus={() => setActiveProduct("moc")}
                             >
                               Miracle on Cloud<span>50+ Hospitals Trust Miracle On Cloud</span>
                             </Link>
@@ -153,7 +155,7 @@ const [showModal, setShowModal] = useState(false);
   className="dropdown-item his-link"
   href=""
   onClick={(e) => e.preventDefault()}
-  onMouseEnter={() => setActiveProduct("miracleHIS")}
+  onMouseEnter={() => setActiveProduct("miracleHIS")} onFocus={() => setActiveProduct("miracleHIS")}
 >
   Miracle LIS
   <span>Accurate Laboratory Management for Faster Diagnostics</span>
@@ -162,7 +164,7 @@ const [showModal, setShowModal] = useState(false);
   className="dropdown-item his-link"
   href=""
   onClick={(e) => e.preventDefault()}
-  onMouseEnter={() => setActiveProduct("miracleHIS")}
+  onMouseEnter={() => setActiveProduct("miracleHIS")} onFocus={() => setActiveProduct("miracleHIS")}
 >
   Miracle RIS
   <span>Advanced Imaging Management for Better Patient Care</span>
@@ -171,7 +173,7 @@ const [showModal, setShowModal] = useState(false);
   className="dropdown-item his-link"
   href=""
   onClick={(e) => e.preventDefault()}
-  onMouseEnter={() => setActiveProduct("miracleHIS")}
+  onMouseEnter={() => setActiveProduct("miracleHIS")} onFocus={() => setActiveProduct("miracleHIS")}
 >
   Miracle Health@Home
   <span>Connected Homecare Solutions for Better Outcomes</span>
@@ -180,7 +182,7 @@ const [showModal, setShowModal] = useState(false);
 <Link
   className="dropdown-item"
   href="/AugastamClinic"
-  onMouseEnter={() => setActiveProduct("augClinic")}
+  onMouseEnter={() => setActiveProduct("augClinic")} onFocus={() => setActiveProduct("augClinic")}
 >
   Augastam Clinic
   <span>
@@ -191,13 +193,13 @@ const [showModal, setShowModal] = useState(false);
                             <Link
                               className="AugEMR-link dropdown-item"
                               href="/Augastam"
-                              onMouseEnter={() => setActiveProduct("aug")}
+                              onMouseEnter={() => setActiveProduct("aug")} onFocus={() => setActiveProduct("aug")}
                               onClick={handleAugastamClick}
                             >
                               Augastam EMR<span>Digital Patient Records for Smarter Clinical Decisions</span>
                             </Link>
                             
-                            <Link className="dropdown-item mobile-link" href="/" onMouseEnter={() => setActiveProduct("mobility")}>Mobility Solution<span>Healthcare Access Anytime Through Mobile Innovation</span></Link>
+                            <Link className="dropdown-item mobile-link" href="/" onMouseEnter={() => setActiveProduct("mobility")} onFocus={() => setActiveProduct("mobility")}>Mobility Solution<span>Healthcare Access Anytime Through Mobile Innovation</span></Link>
                           </div>
 
                           <div className="col-lg-6 navbar-content">
@@ -214,7 +216,7 @@ const [showModal, setShowModal] = useState(false);
                             {/* Show MOC details */}
                             {activeProduct === "augClinic" && (
                               <div className='augClinic-details'>
-                                <img src={augDetailsIcon} alt="MOC" />
+                                <img src={augDetailsIcon} alt="Augastam Clinic" />
                                 <h3>Augastam Clinic</h3>
                                 <p>Smarter Care, Anywhere</p>
                                 <p>20+ Hospitals are<br></br> Using Augastam Clinic</p>
@@ -265,7 +267,13 @@ const [showModal, setShowModal] = useState(false);
             </nav>
           </div>
 
-       <div className='col-md-3 mt-2 text-end'>
+       <div className='col-md-3 mt-2 text-end' style={{ whiteSpace: 'nowrap' }}>
+  {['/Augastam', '/Clinic'].includes((pathname || '').replace(/\/+$/, '')) && (
+    <>
+      <button type="button" data-onboard-status data-onboard-source="augastam-header" className='signup-btn' style={{ marginRight: 6, padding: '8px 12px', fontSize: 14 }}>Track status</button>
+      <LoginLink className='signup-btn' style={{ marginRight: 6, padding: '8px 14px', fontSize: 14 }} source="augastam-header">Login</LoginLink>
+    </>
+  )}
   <button
     className='signup-btn talkExpert'
     onClick={() => setShowModal(true)}

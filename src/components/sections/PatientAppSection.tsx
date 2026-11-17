@@ -40,7 +40,7 @@ export default function PatientAppSection() {
               </li>
             </ul>
           </div>
-          <button className="demo mt-4">
+          <button className="demo mt-4" data-onboard data-onboard-source="clinic-patient-app">
             Book a Demo Now
             {" "}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

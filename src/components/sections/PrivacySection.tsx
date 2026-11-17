@@ -18,7 +18,7 @@ export default function PrivacySection() {
               Manage your practice securely with built in layers of privacy & protection
             </h1>
           </div>
-          <button className="try">
+          <button className="try" data-onboard data-onboard-source="clinic-try-free">
             Try For Free
             {" "}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

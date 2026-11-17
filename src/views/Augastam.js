@@ -65,7 +65,7 @@ function Augastam() {
             <div className='box-auugas'>
                 <h2><span>Where</span> Clinical Precision <span>Meets</span><br/> Operational Intelligence</h2>
                 <p>Augastam isn’t just another EMR, it’s your practice’s command center. From adaptive clinical workflows to role-based dashboards and intelligent documentation tools, Augastam empowers care teams to focus more on patients and less on processes every step of the journey.</p>
-                <a href="#void" className='getStared'>Get Started</a> 
+                <a href="/contact" className='getStared' data-onboard data-onboard-source="augastam-emr-hero">Get Started</a>
 <img src={augastamIcons} alt='augastam Icons' />
 
                 

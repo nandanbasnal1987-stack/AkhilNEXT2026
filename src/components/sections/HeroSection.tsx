@@ -30,7 +30,7 @@ export default function HeroSection() {
           </p>
           <div className="btns in" style={{ "--d": "3" } as CSSProperties}>
             <button className="b1">Explore platform</button>{" "}
-            <button className="b2">Book a Live Demo</button>
+            <button className="b2" data-onboard data-onboard-source="clinic-hero">Book a Live Demo</button>
           </div>
         </div>
       </section>

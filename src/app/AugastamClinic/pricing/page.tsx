@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ContactSection from "@/components/sections/ContactSection";
+import { useOnboard } from "@/onboarding/OnboardProvider";
 import "./pricing.css";
 
 /* ================================================================
@@ -515,9 +516,10 @@ export default function PricingPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
 
+  // "Get Started" now opens the 4-step onboarding form on the chosen plan (the old lead modal below is no longer opened).
+  const { open: openOnboarding } = useOnboard();
   const handleGetStarted = (planName: string) => {
-    setSelectedPlan(planName);
-    setModalOpen(true);
+    openOnboarding(planName.includes("Enterprise") ? "custom" : "standard", `pricing:${planName}`);
   };
 
   const closeModal = () => {

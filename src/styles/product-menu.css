@@ -1,0 +1,75 @@
+/* Products mega menu: smooth open/close, staggered items, hover feedback and a fading preview panel.
+   Desktop only (the navbar collapses to the mobile layout below 992px, which keeps its own behaviour).
+   Bootstrap toggles `.show` on the menu; here the menu is always laid out and only its opacity / visibility / transform
+   change, which is what makes the CLOSE animate too (display:none can't be transitioned). */
+
+@media (min-width: 992px) {
+  .custom-nav .dropdown-menu.mega-menu {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+    transform-origin: top center;
+    pointer-events: none;
+    animation: none !important;
+    border-radius: 16px;
+    box-shadow: 0 28px 70px rgba(10, 30, 60, 0.22), 0 4px 14px rgba(10, 30, 60, 0.08);
+    transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.28s;
+    will-change: opacity, transform;
+  }
+  .custom-nav .dropdown-menu.mega-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  /* items rise in one after another every time the menu opens (heading first, then the 8 products) */
+  .custom-nav .mega-menu.show .dropdown-header,
+  .custom-nav .mega-menu.show a.dropdown-item {
+    animation: pmRise 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .custom-nav .mega-menu.show .dropdown-header { animation-delay: 0.04s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(1) { animation-delay: 0.08s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(2) { animation-delay: 0.12s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(3) { animation-delay: 0.16s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(4) { animation-delay: 0.2s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(5) { animation-delay: 0.24s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(6) { animation-delay: 0.28s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(7) { animation-delay: 0.32s; }
+  .custom-nav .mega-menu.show a.dropdown-item:nth-of-type(8) { animation-delay: 0.36s; }
+
+  /* hover / keyboard focus feedback */
+  .custom-nav li a.dropdown-item {
+    border-radius: 10px;
+    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  }
+  .custom-nav li a.dropdown-item:hover,
+  .custom-nav li a.dropdown-item:focus-visible {
+    transform: translateX(5px);
+    box-shadow: inset 3px 0 0 #0074c0;
+  }
+  .custom-nav li a.dropdown-item:focus-visible { outline: 2px solid #0074c0; outline-offset: -2px; }
+
+  /* the preview on the right fades and slides in whenever a different product is hovered */
+  .custom-nav .mega-menu .navbar-content > div { animation: pmPanel 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both; border-radius: 12px; }
+  .custom-nav .mega-menu .navbar-content img { animation: pmPop 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) 0.06s both; }
+
+  /* the little arrow next to "Products" turns over while the menu is open */
+  .custom-nav .nav-link.dropdown-toggle::after { transition: transform 0.25s ease; }
+  .custom-nav .nav-link.dropdown-toggle.show::after { transform: rotate(225deg); }
+}
+
+@keyframes pmRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes pmPanel { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+@keyframes pmPop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-nav .dropdown-menu.mega-menu,
+  .custom-nav .mega-menu.show .dropdown-header,
+  .custom-nav .mega-menu.show a.dropdown-item,
+  .custom-nav .mega-menu .navbar-content > div,
+  .custom-nav .mega-menu .navbar-content img,
+  .custom-nav li a.dropdown-item { animation: none !important; transition: none !important; transform: none !important; }
+}

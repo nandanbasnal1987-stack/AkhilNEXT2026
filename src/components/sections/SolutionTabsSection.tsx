@@ -49,7 +49,7 @@ export default function SolutionTabsSection() {
               <li><i></i> Specialty-wise EMR Configuration</li>
               <li><i></i> Copy Previous Clinical Data & Comparative Clinical Analysis</li>
             </ul>
-            <button className="try"> Try Now </button>
+            <button className="try" data-onboard data-onboard-source="clinic-try-now"> Try Now </button>
             <div className="right">
               <p className="dr d-none"> Dr. Anusheel Singh </p>
               <div className="frame d-none">
@@ -126,7 +126,7 @@ export default function SolutionTabsSection() {
               <li><i></i> WhatsApp-Based Patient Communication</li>
               <li><i></i> Email and SMS Notification </li>
             </ul>
-            <button className="try"> Try Now </button>
+            <button className="try" data-onboard data-onboard-source="clinic-try-now"> Try Now </button>
             <div className="right">
               <p className="dr d-none">Dr. Anusheel Singh </p>
               <div className="frame d-none">
@@ -193,7 +193,7 @@ export default function SolutionTabsSection() {
               <li><i></i> Doctor Availability and Schedule Management</li>
               <li><i></i> Patient Follow-Up Appointment Booking </li>
             </ul>
-            <button className="try">
+            <button className="try" data-onboard data-onboard-source="clinic-try-now">
               Try Now
             </button>
             <div className="right">
@@ -264,7 +264,7 @@ export default function SolutionTabsSection() {
               <li><i></i> Registration forms that adapt to national and international requirements. </li>
               <li><i></i> Ideal for multilingual cities, medical tourism and international clinics.</li>
             </ul>
-            <button className="try">
+            <button className="try" data-onboard data-onboard-source="clinic-try-now">
               Try Now
             </button>
             <div className="right">
@@ -337,7 +337,7 @@ export default function SolutionTabsSection() {
               <li><i></i> Role-based access restricted by role, specialty and authorisation level.</li>
               <li><i></i> Encryption in transit (SSL) and at rest (AWS KMS, with bring-your-own-key support). </li>
             </ul>
-            <button className="try">
+            <button className="try" data-onboard data-onboard-source="clinic-try-now">
               Try Now
             </button>
             <div className="right">
