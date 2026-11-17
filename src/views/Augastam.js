@@ -2,6 +2,7 @@
 
 import React from 'react'
 import '../styles/global.css';
+import OnboardPricing from '../onboarding/OnboardPricing';
 const Chatbox = "/images/Chat_Box.svg";
 const mailicon = "/images/Mail_icon.svg";
 const phoneicon = "/images/Phone_icon.svg";
@@ -222,7 +223,9 @@ function Augastam() {
                 
                 
 
-               <FaqAccordion />  
+           <OnboardPricing source="augastam-pricing" />
+
+               <FaqAccordion />
        
  
 

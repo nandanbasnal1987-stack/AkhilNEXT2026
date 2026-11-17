@@ -2,6 +2,7 @@
 
 import React from 'react'
 import '../styles/global.css';
+import OnboardPricing from '../onboarding/OnboardPricing';
 const starIcon = "/images/logo-btmbg.png";
 const connectingImage1 = "/images/connecting-image1.jpg";
 const connectingImage2 = "/images/connecting-image2.png";
@@ -281,8 +282,10 @@ function Clinic() {
              
      </div>
 
+<OnboardPricing source="clinic-pricing" />
+
 <BlueBanner />
-   
+
 
        </div>
 
