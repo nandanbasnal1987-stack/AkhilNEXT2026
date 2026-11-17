@@ -5,9 +5,11 @@ import type { ReactNode } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import OnboardWizard from './OnboardWizard';
 import StatusPanel from './StatusPage';
+import ContactDialog from './ContactDialog';
 import { Modal } from './onboardUi';
 import type { PlanCode } from './api/onboarding';
 import './onboarding.css';
+import './plan-picker.css';
 
 /**
  * Opens the 4-step clinic onboarding form (a modal) from any button on the site.
@@ -27,15 +29,19 @@ const PLANS: readonly string[] = ['free', 'standard', 'custom'];
 export default function OnboardProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<{ plan?: PlanCode; key: number } | null>(null);
   const [statusOpen, setStatusOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const open = useCallback((plan?: PlanCode, source = 'button') => {
     trackEvent('onboarding_open', { source, plan: plan ?? 'default' });
+    // the Custom plan is a sales enquiry ("Contact us"), not a self-service application
+    if (plan === 'custom') { setState(null); setStatusOpen(false); setContactOpen(true); return; }
     setState((s) => ({ plan, key: (s?.key ?? 0) + 1 }));
   }, []);
 
   const openStatus = useCallback((source = 'button') => {
     trackEvent('onboarding_status_open', { source });
     setState(null);
+    setContactOpen(false);
     setStatusOpen(true);
   }, []);
 
@@ -70,9 +76,14 @@ export default function OnboardProvider({ children }: { children: ReactNode }) {
           </Modal>
         </div>
       )}
+      {contactOpen && (
+        <div className="ob-root">
+          <ContactDialog onClose={() => setContactOpen(false)} />
+        </div>
+      )}
       {state && (
         <div className="ob-root">
-          <OnboardWizard key={state.key} variant="modal" initialPlan={state.plan} onClose={() => setState(null)} />
+          <OnboardWizard key={state.key} variant="modal" initialPlan={state.plan} onClose={() => setState(null)} onContact={() => open('custom', 'wizard-plan-picker')} />
         </div>
       )}
     </OnboardCtx.Provider>

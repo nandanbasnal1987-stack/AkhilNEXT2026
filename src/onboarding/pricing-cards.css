@@ -1,0 +1,39 @@
+/* Plan cards on the Augastam EMR / Clinic pages. Everything is scoped under .obp so nothing leaks into the site. */
+.obp { --obp-brand: #0074c0; --obp-brand-dark: #005a96; --obp-ink: #1a2236; --obp-mute: #5b6578; --obp-line: #dbe6f1;
+  background: linear-gradient(180deg, #f4f9fe, #eaf3fb); padding: 72px 16px; font-family: inherit; }
+.obp, .obp * { box-sizing: border-box; }
+.obp * { font-family: inherit; }
+.obp-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+.obp h2 { color: var(--obp-ink); font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; margin: 0 0 8px; }
+.obp-lead { color: var(--obp-mute); font-size: 1.05rem; margin: 0 0 40px; }
+
+.obp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; text-align: left; }
+.obp-card { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--obp-line);
+  border-radius: 18px; padding: 32px 28px 28px; box-shadow: 0 6px 22px rgba(10, 30, 60, .06);
+  transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease, border-color .25s ease; }
+.obp-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(10, 30, 60, .14); border-color: var(--obp-brand); }
+.obp-pop { border: 2px solid var(--obp-brand); box-shadow: 0 14px 40px rgba(0, 116, 192, .2); }
+.obp-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--obp-brand); color: #fff;
+  font-size: 12px; font-weight: 600; letter-spacing: .03em; padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+
+.obp-card h3 { color: var(--obp-ink); font-size: 1.25rem; font-weight: 700; margin: 0 0 10px; }
+.obp-price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
+.obp-price b { color: var(--obp-ink); font-size: 2.6rem; line-height: 1.1; font-weight: 800; }
+.obp-price b.obp-contact { font-size: 1.9rem; }
+.obp-price small { color: var(--obp-mute); font-size: .95rem; }
+.obp-blurb { color: var(--obp-mute); margin: 0 0 18px; min-height: 2.8em; }
+
+.obp-card ul { list-style: none; margin: 0 0 26px; padding: 0; flex: 1; }
+.obp-card li { display: flex; align-items: flex-start; gap: 9px; color: var(--obp-ink); font-size: .95rem; padding: 6px 0; }
+.obp-card li svg { flex: none; margin-top: 3px; color: #fff; background: var(--obp-brand); border-radius: 50%; padding: 2px; width: 17px; height: 17px; }
+
+.obp-btn { display: block; text-align: center; text-decoration: none; cursor: pointer; font-weight: 600; font-size: 1rem;
+  padding: 13px 18px; border-radius: 12px; color: var(--obp-brand); background: #fff; border: 2px solid var(--obp-brand);
+  transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.obp-btn:hover { background: var(--obp-brand); color: #fff; transform: translateY(-1px); }
+.obp-btn-primary { background: var(--obp-brand); color: #fff; box-shadow: 0 8px 20px rgba(0, 116, 192, .3); }
+.obp-btn-primary:hover { background: var(--obp-brand-dark); border-color: var(--obp-brand-dark); }
+.obp-btn:focus-visible { outline: 3px solid rgba(0, 116, 192, .4); outline-offset: 2px; }
+
+@media (max-width: 991px) { .obp-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } .obp-blurb { min-height: 0; } .obp { padding: 56px 16px; } }
+@media (prefers-reduced-motion: reduce) { .obp-card, .obp-btn { transition: none; } .obp-card:hover { transform: none; } }
