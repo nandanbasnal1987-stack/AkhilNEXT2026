@@ -4,13 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import emailjs from "@emailjs/browser";               // <-- ADDED
+import emailjs from "@emailjs/browser";
 import ClinicMobileMenu from "@/components/layout/ClinicMobileMenu";
 import { LoginLink } from "@/onboarding/SignInLinks";
 import { useScrolled } from "@/hooks/useScrolled";
 import "@/styles/navbar.css";
 
-const logo = "/images/akhil-icon.svg";
+const logo = "/images/akhil-logo.png";
+
+// Demo video (embed URL — note the /embed/ path, not /watch)
+const DEMO_VIDEO_URL = "https://www.youtube.com/embed/oRlrnhMdznU";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+\d][\d\s\-()]{6,}$/;
@@ -33,6 +36,7 @@ const NAV_ITEMS = [
 export default function ClinicNavbar() {
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false); // NEW: video modal
   const scrolled = useScrolled(10);
 
   const pathname = usePathname();
@@ -42,7 +46,7 @@ export default function ClinicNavbar() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [status, setStatus] = useState(null);          // <-- ADDED (null | 'success' | 'error')
+  const [status, setStatus] = useState(null); // null | 'success' | 'error'
 
   const formRef = useRef(null);
 
@@ -95,7 +99,7 @@ export default function ClinicNavbar() {
     setErrors({});
     setSubmitted(false);
     setSubmitting(false);
-    setStatus(null);                                     // <-- ADDED
+    setStatus(null);
     setDemoOpen(true);
   };
 
@@ -104,12 +108,21 @@ export default function ClinicNavbar() {
     setSubmitting(false);
   };
 
-  /* Escape key and body scroll lock */
+  /* Video modal helpers */
+  const openVideo = () => {
+    setVideoOpen(true);
+    setOpen(false); // close mobile menu if open
+  };
+
+  const closeVideo = () => setVideoOpen(false);
+
+  /* Escape key and body scroll lock (shared by both modals) */
   useEffect(() => {
-    if (!demoOpen) return;
+    if (!demoOpen && !videoOpen) return;
     const onKey = (e) => {
       if (e.key === "Escape") {
         setDemoOpen(false);
+        setVideoOpen(false);
         setSubmitting(false);
       }
     };
@@ -120,7 +133,7 @@ export default function ClinicNavbar() {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [demoOpen]);
+  }, [demoOpen, videoOpen]);
 
   /* Form validation */
   const validate = (values) => {
@@ -166,9 +179,7 @@ export default function ClinicNavbar() {
     setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] }));
   };
 
-  /* ------------------------------------------------------------
-     FORM SUBMIT — EmailJS (same pattern as Contactus.jsx)
-  ------------------------------------------------------------ */
+  /* Form submit — EmailJS */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -185,13 +196,12 @@ export default function ClinicNavbar() {
     setSubmitting(true);
     setStatus(null);
 
-    // Using EmailJS to send the form
     emailjs
       .sendForm(
-        "service_rjdaw98",        // <-- your Service ID
-        "template_t5lcfaj",       // <-- your Template ID
+        "service_rjdaw98",
+        "template_t5lcfaj",
         formRef.current,
-        "1jS0s7rCMLTiVJWK3"       // <-- your Public Key
+        "1jS0s7rCMLTiVJWK3"
       )
       .then((result) => {
         console.log("Email sent successfully:", result.text);
@@ -205,13 +215,11 @@ export default function ClinicNavbar() {
       })
       .finally(() => {
         setSubmitting(false);
-        // clear the error status after 5s (keep success as it's the confirmation state)
         if (status !== "success") {
           setTimeout(() => setStatus(null), 5000);
         }
       });
   };
-  /* ------------------------------------------------------------ */
 
   return (
     <>
@@ -219,19 +227,12 @@ export default function ClinicNavbar() {
         className={`nav${open ? " open" : ""}${scrolled ? " sh" : ""}`}
         id="sec1-nav"
       >
-        <div className="logo-group" style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+        <div
+          className="logo-group"
+          style={{ display: "flex", alignItems: "center", gap: "15px" }}
+        >
           <Link className="logo akhil-logo" href="/" title="Go to Home">
-            <img className="akhil-logo" src={logo} height="30" alt="Responsive image" />
-          </Link>
-          <Link className="logo augastam-logo" href="/AugastamClinic">
-            <Image
-              src="/images/augastam.svg"
-              alt="Augastam Logo"
-              width={180}
-              height={50}
-              style={{ width: "auto", height: "auto", borderLeft: "1px solid #ececec" }}
-              priority
-            />
+            <img className="akhil-logo" src={logo} height="45" alt="Responsive image" />
           </Link>
         </div>
 
@@ -263,10 +264,26 @@ export default function ClinicNavbar() {
         </ul>
 
         <div className="cta">
-          <LoginLink className="login" source="clinic-header">Login</LoginLink>
-          <button type="button" className="demo" data-onboard data-onboard-source="clinic-navbar">
-            Book a demo
-          </button>
+          <LoginLink className="login" source="clinic-header">
+            Login
+          </LoginLink>
+         
+<button type="button" className="demo" onClick={openVideo}>
+  <span className="play-icon">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="white"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z" />
+    </svg>
+  </span>
+  <span>Watch Demo</span>
+</button>
+
         </div>
 
         <ClinicMobileMenu
@@ -275,7 +292,57 @@ export default function ClinicNavbar() {
         />
       </header>
 
-      {/* Book a Demo Modal */}
+      {/* ---------------- Video Modal ---------------- */}
+      {videoOpen && (
+        <div
+          className="demo-modal-overlay"
+          onClick={closeVideo}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Augastam Clinic demo video"
+        >
+          <div
+            className="demo-modal"
+            style={{ maxWidth: "960px", width: "92%", padding: "16px" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="demo-modal-close"
+              aria-label="Close"
+              onClick={closeVideo}
+            >
+              ×
+            </button>
+            <div
+              style={{
+                position: "relative",
+                paddingBottom: "56.25%",
+                height: 0,
+                borderRadius: "12px",
+                overflow: "hidden",
+                background: "#000",
+              }}
+            >
+              <iframe
+                src={`${DEMO_VIDEO_URL}?autoplay=1&rel=0`}
+                title="Augastam Clinic demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: 0,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- Book a Demo Modal ---------------- */}
       {demoOpen && (
         <div
           className="demo-modal-overlay"
@@ -294,7 +361,6 @@ export default function ClinicNavbar() {
               ×
             </button>
 
-            {/* SUCCESS state — same idea as Contactus */}
             {submitted ? (
               <div className="demo-modal-success">
                 <h2 id="demo-modal-title">Thank you!</h2>
@@ -308,7 +374,6 @@ export default function ClinicNavbar() {
                 <h2 id="demo-modal-title">Book a demo</h2>
                 <p>Tell us a bit about your practice and we&apos;ll be in touch.</p>
 
-                {/* ERROR alert — same class style as Contactus */}
                 {status === "error" && (
                   <div className="alert alert-danger">
                     Something went wrong. Please try again later.

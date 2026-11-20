@@ -83,7 +83,11 @@ export default function ConnectedClinicSection() {
               </div>
             </div>
           </section>
-          <section className="head rv" style={{"display":"block"}}>
+
+           <div className="row">
+            <div className="col-5"> <section className="head rv" style={{"display":"block", textAlign:"left"}}>
+
+           
             <span className="chip">
               The problem
             </span>
@@ -134,8 +138,9 @@ export default function ConnectedClinicSection() {
                 </p>
               </div>
             </article>
-          </div>
-          <section className="head second rv" id="section-3a" style={{"display":"block"}}>
+          </div></div>
+          <div className="col-2"><span style={{width:'1px',height:'100%', background:'#d8d8d8',margin:'0 auto', display:'table'}}></span></div>
+            <div className="col-5"><section className="head second rv" id="section-3a" style={{"display":"block", textAlign:"left"}}>
             <span className="chip">
               With Augastam
             </span>
@@ -198,7 +203,10 @@ export default function ConnectedClinicSection() {
                 </p>
               </div>
             </article>
-          </div>
+          </div></div>
+            </div>
+         
+          
         </div>
       </div>
     </div>

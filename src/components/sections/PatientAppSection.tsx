@@ -16,7 +16,7 @@ export default function PatientAppSection() {
         <div className="canvas">
           <div className="copy">
             <h1>
-              Patient app: Higher retention, better experience
+              Patient App: Higher Retention, Better Experience
             </h1>
             <p className="mt-3">Book appointments, Book video consultations, Book home sample collection, View records, Pay bills and Request refunds.</p>
             <ul id="sec6-list">
@@ -41,7 +41,7 @@ export default function PatientAppSection() {
             </ul>
           </div>
           <button className="demo mt-4" data-onboard data-onboard-source="clinic-patient-app">
-            Book a Demo Now
+           Watch Demo
             {" "}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 12h17M14 6l6 6-6 6" />

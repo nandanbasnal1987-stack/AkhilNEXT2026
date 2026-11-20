@@ -68,7 +68,7 @@ const STEP_OF = Object.fromEntries(
   STEPS.flatMap((s) => STEP_FIELDS[s].map((k) => [k, s])),
 ) as Record<keyof Values, StepNo>;
 
-const CLINIC_TYPES = ['Single Clinic', 'Multi-speciality Clinic', 'Hospital', 'Diagnostic Centre', 'Dental Clinic', 'Eye Care Centre', 'Other'];
+const CLINIC_TYPES = ['Single Doctor Clinic', 'PolyClinic', 'Dental Clinic', 'Eye Care Clinic', 'Other'];
 const PROVIDER_BANDS = [
   { label: '1 - 5 providers', value: 5 }, { label: '6 - 10 providers', value: 10 }, { label: '11 - 25 providers', value: 25 },
   { label: '26 - 50 providers', value: 50 }, { label: '51 - 100 providers', value: 100 }, { label: 'More than 100 providers', value: 200 },
@@ -715,9 +715,9 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
             <Field label="Clinic Name" htmlFor="w-clinic_name" required error={err('clinic_name')} ok={okMsg('clinic_name', avail.name, nameD, v.clinic_name.trim())}>
               {input('clinic_name', { placeholder: 'Enter clinic name', autoComplete: 'organization' })}
             </Field>
-            <Field label="Clinic Code" htmlFor="w-clinic_code" required error={err('clinic_code')} hint="3–10 letters or digits. Suggested from the clinic name; you can change it." ok={okMsg('clinic_code', avail.code, codeD, v.clinic_code)}>
+            {/* <Field label="Clinic Code" htmlFor="w-clinic_code" required error={err('clinic_code')} hint="3–10 letters or digits. Suggested from the clinic name; you can change it." ok={okMsg('clinic_code', avail.code, codeD, v.clinic_code)}>
               {input('clinic_code', { placeholder: 'Enter clinic code', maxLength: 10 })}
-            </Field>
+            </Field> */}
             <Field label="Facilities" htmlFor="w-facilities" required error={err('facilities')} hint={limitHint}>
               <FacilityPicker
                 id="w-facilities"
@@ -741,12 +741,12 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
                 ))}
               </div>
             </Field>
-            <Field label="Number of Providers" htmlFor="w-number_of_providers" required error={err('number_of_providers')}>
+            {/* <Field label="Number of Providers" htmlFor="w-number_of_providers" required error={err('number_of_providers')}>
               <select id="w-number_of_providers" value={v.number_of_providers} onChange={set('number_of_providers')} onBlur={blur('number_of_providers')} aria-invalid={err('number_of_providers') ? true : undefined}>
                 <option value="">Select number of providers</option>
                 {PROVIDER_BANDS.map((b) => <option key={b.value} value={String(b.value)}>{b.label}</option>)}
               </select>
-            </Field>
+            </Field> */}
           </div>
         </>
       );
@@ -766,7 +766,7 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
             <Field label="Phone" htmlFor="w-phone" required error={err('phone')} ok={okMsg('phone', avail.phone, phoneD, v.phone.trim())}>
               {input('phone', { type: 'tel', placeholder: 'e.g. 98765 43210', autoComplete: 'tel', inputMode: 'tel', maxLength: 20 })}
             </Field>
-            <Field label="Registration / ID Number" htmlFor="w-clinic_registration_id" required error={err('clinic_registration_id')}>
+            <Field label="MCI Number" htmlFor="w-clinic_registration_id" required error={err('clinic_registration_id')}>
               {input('clinic_registration_id', { placeholder: 'e.g. your clinic registration number', maxLength: 60 })}
             </Field>
             <Field label="Street Address" htmlFor="w-address" required full error={err('address')}>
@@ -891,7 +891,7 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
         <button type="button" className="ob-icon-btn w-x" aria-label="Close" onClick={() => void requestClose()} disabled={busy}><X size={18} /></button>
       )}
       <Title id="w-title" className={done ? 'w-sr' : undefined}>Clinic Onboarding Request</Title>
-      {!done && <p>Complete the form below to begin your clinic onboarding process.</p>}
+      {!done && <p>Complete the form below to begin your clinic's onboarding process.</p>}
       {!done && (
         <>
           <ol className="w-stepper" aria-label="Progress">

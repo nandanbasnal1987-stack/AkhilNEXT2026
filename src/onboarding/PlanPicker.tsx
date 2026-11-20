@@ -51,7 +51,7 @@ export default function PlanPicker({ plans, current, price, onPick }: {
           {plans.map((p, i) => (
             <li key={p.code} role="option" aria-selected={p.code === current.code} className={`w-pp-opt${i === hi ? ' hi' : ''}${p.code === current.code ? ' on' : ''}`}
               onMouseEnter={() => setHi(i)} onMouseDown={(e) => e.preventDefault()} onClick={() => pick(p.code)}>
-              <span className="w-pp-name"><b>{p.name}</b><small>{p.code === 'custom' ? 'Talk to our team (enquiry)' : p.blurb}</small></span>
+              <span className="w-pp-name"><b>{p.name}</b><small>{p.code === 'custom' ? 'Talk to Our Team (Enquiry)' : p.blurb}</small></span>
               <em>{p.price_label}{p.price_monthly ? <i>/month</i> : null}</em>
               {p.code === current.code && <Check size={16} aria-hidden="true" />}
             </li>

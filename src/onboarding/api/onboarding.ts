@@ -346,7 +346,7 @@ function mockStepErrorsFull(step: number, d: DraftData, planCode: PlanCode): Rec
     need('city', 'Enter the city.');
     need('state', 'Enter the state.');
     need('pincode', 'Enter the PIN / postal code.');
-    need('clinic_registration_id', 'Enter the registration / ID number.');
+    need('clinic_registration_id', 'Enter the MCI Number.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s(d, 'email_id'))) e.email_id = 'Enter a valid email address.';
     if (s(d, 'phone').replace(/\D/g, '').length < 7) e.phone = 'Enter a valid phone number.';
   }

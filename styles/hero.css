@@ -10,14 +10,14 @@
       position: absolute;
       inset: -30px;
       z-index: -3;
-      transition: transform 0.5s ease-out;
-      animation: sec1-kb 24s ease-in-out infinite alternate;
+      /* transition: transform 0.5s ease-out; 
+      animation: sec1-kb 24s ease-in-out infinite alternate;*/
     }
-@keyframes sec1-kb{
+/* @keyframes sec1-kb{
       to {
         scale: 1.07;
       }
-}
+} */
 .section-1 .scene svg{
       width: 100%;
       height: 100%;
@@ -25,10 +25,10 @@
     }
 .section-1 .photo{
       position: absolute;
-      inset: -30px;
+      inset: 0;
       z-index: -2;
       background: var(--photo) center / cover no-repeat;
-      transition: transform 0.5s ease-out;
+      /* transition: transform 0.5s ease-out; */
     }
 .section-1 .shade{
       position: absolute;

@@ -302,7 +302,7 @@ export default function AugastamAIPage() {
                 </div>
                 <div className="row_remove" style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                   <button
-                    className={`mic ${listening ? "on" : ""}`}
+                    className={`mic on ${listening ? "on" : ""}`}
                     type="button"
                     onClick={toggleListening}
                     aria-label="Start or stop listening"
