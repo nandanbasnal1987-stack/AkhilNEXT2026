@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ChangeEvent, FormEvent, KeyboardEvent as ReactKeyEvent, ReactNode } from 'react';
-import { ArrowLeft, ArrowRight, Building2, Check, Copy, Info, Loader2, Mail, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Copy, Info, Loader2, Mail, X } from 'lucide-react';
 import { ApiError, api, localPlans } from './api/onboarding';
 import type { AvailabilityQuery, BillingCycle, DraftData, Facility, Plan, PlanCode, SubmitPayload, SubmitResult } from './api/onboarding';
 import { Field, useDebounced } from './onboardUi';
 import ClinicPreview from './ClinicPreview';
 import ProgressTracker from './ProgressTracker';
 import { trackEvent } from '@/lib/analytics';
+import PlanPicker from './PlanPicker';
 import { cityError, citiesOf, loadCities, loadGeo, phoneError, pinError, stateNames } from './geo';
 
 /* ------------------------------------------------------------------ model */
@@ -268,11 +269,13 @@ interface Props {
   variant: 'modal' | 'page';
   initialPlan?: PlanCode;
   onClose?: () => void;
+  /** Custom is a sales enquiry: when picked in the plan dropdown the host opens the Contact us form. */
+  onContact?: () => void;
 }
 
 interface Avail { email?: boolean; phone?: boolean; name?: boolean; code?: boolean }
 
-export default function OnboardWizard({ variant, initialPlan, onClose }: Props) {
+export default function OnboardWizard({ variant, initialPlan, onClose, onContact }: Props) {
   const base = useRef<Values>({ ...EMPTY, plan_code: initialPlan ?? 'standard' });
   const saved = useRef<Partial<Record<StepNo, string>>>({});
   const codeTouched = useRef(false);
@@ -418,7 +421,11 @@ export default function OnboardWizard({ variant, initialPlan, onClose }: Props) 
     setV((p) => ({ ...p, [k]: value, same_as_contact: false }));
     if (serverErrors[k]) setServerErrors((p) => ({ ...p, [k]: undefined }));
   };
-  const blur = (k: keyof Values) => () => setTouched((p) => ({ ...p, [k]: true }));
+  const blur = (k: keyof Values) => () => {
+    setTouched((p) => ({ ...p, [k]: true }));
+    // licence / registration ID is mandatory: tag whether it was provided (the number itself is never sent)
+    if (k === 'clinic_registration_id') trackEvent('licence_id_field', { filled: v.clinic_registration_id.trim().length > 0, required: true });
+  };
 
   const choosePlan = (code: PlanCode) => {
     const next = plans.find((p) => p.code === code);
@@ -475,7 +482,11 @@ export default function OnboardWizard({ variant, initialPlan, onClose }: Props) 
     setFormError('');
     setNotice('');
     const errs = stepErrors(step);
-    if (Object.keys(errs).length) { setShowErrors(true); focusFirstInvalid(); return; }
+    if (Object.keys(errs).length) {
+      if (errs.clinic_registration_id) trackEvent('licence_id_missing', { step });
+      if (errs.facilities) trackEvent('facility_licence_exceeded', { plan: plan.code, facilities: v.facilities.length, max_facilities: plan.max_facilities ?? 'unlimited' });
+      setShowErrors(true); focusFirstInvalid(); return;
+    }
     setBusy(true);
     try {
       await saveStep(step);
@@ -492,6 +503,14 @@ export default function OnboardWizard({ variant, initialPlan, onClose }: Props) 
   };
 
   useEffect(() => { trackEvent('onboarding_step', { step }); }, [step]);
+
+  // plan licence limit (from the plans lookup): tag every change to the facility list against the plan's cap
+  const facilityCount = v.facilities.length;
+  useEffect(() => {
+    if (!facilityCount) return;
+    const max = plan.max_facilities;
+    trackEvent('facility_licence_limit', { plan: plan.code, facilities: facilityCount, max_facilities: max ?? 'unlimited', at_limit: max !== null && facilityCount >= max });
+  }, [facilityCount, plan.code, plan.max_facilities]);
 
   const goTo = (n: StepNo) => {
     if (n === step || busy || n > maxStep) return;
@@ -660,14 +679,15 @@ export default function OnboardWizard({ variant, initialPlan, onClose }: Props) 
   );
 
   const planCard = (
-    <div className="w-plan">
-      <span className="w-plan-icon"><Building2 size={22} /></span>
-      <div>
-        <strong>Selected Plan</strong>
-        <span>{plan.name}</span>
-      </div>
-      <span className="w-plan-price">{planPrice(plan, plan.price_monthly ? v.billing_cycle : 'monthly')}</span>
-    </div>
+    <PlanPicker
+      plans={plans}
+      current={plan}
+      price={planPrice(plan, plan.price_monthly ? v.billing_cycle : 'monthly')}
+      onPick={(code) => {
+        trackEvent('plan_change', { from: plan.code, to: code });
+        if (code === 'custom' && onContact) onContact(); else choosePlan(code);
+      }}
+    />
   );
 
   const limitHint = plan.max_facilities === null
