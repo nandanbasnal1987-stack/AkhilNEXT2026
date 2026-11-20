@@ -19,7 +19,7 @@ export default function HeroSection() {
     <div className="section-1">
       <section className="hero" id="sec1-hero" ref={heroRef} style={{ display: "block" }}>
         <div className="scene" id="sec1-scene" ref={sceneRef}>
-          <Image src="/images/clinic-banner.jpg" alt="Augastam clinic banner" width={0} height={0} sizes="100vw" priority style={{ width: "100%", height: "auto" }} />
+          <Image src="/images/Clinic-banner.jpg" alt="Augastam clinic banner" width={0} height={0} sizes="100vw" priority style={{ width: "100%", height: "auto" }} />
         </div>
         <div className="photo" id="sec1-photo" ref={photoRef}></div>
         <div className="shade"></div>
