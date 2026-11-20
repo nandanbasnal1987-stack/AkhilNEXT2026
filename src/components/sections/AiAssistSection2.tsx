@@ -1,7 +1,13 @@
- "use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import "@/styles/augastam-ai.css";
+
+type CSSVars = React.CSSProperties & {
+  "--mx"?: number | string;
+  "--my"?: number | string;
+  "--i"?: number | string;
+};
 
 const SUMMARY_ONE =
   "RITIKA is a 31-year-old female at a current outpatient visit. The highest-priority problem is Salmonella sepsis, coded and unconfirmed.";
@@ -62,7 +68,15 @@ const VISITS = [
 
 function RefreshIcon() {
   return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+    <svg
+      width="11"
+      height="11"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      aria-hidden="true"
+    >
       <path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5" />
     </svg>
   );
@@ -92,14 +106,14 @@ export default function AugastamAIPage() {
   const [pointer, setPointer] = useState({ x: "50%", y: "30%" });
   const typeRun = useRef(0);
   const speechRun = useRef(0);
-  const fieldRef = useRef(null);
+  const fieldRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let cancelled = false;
     const run = ++typeRun.current;
 
-    async function typeText(setter, value) {
+    async function typeText(setter: (v: string) => void, value: string) {
       setter("");
       for (let i = 0; i < value.length; i += 1) {
         if (cancelled || run !== typeRun.current) return;
@@ -211,7 +225,7 @@ export default function AugastamAIPage() {
     else startListening();
   }
 
-  function handlePointerMove(event) {
+  function handlePointerMove(event: React.PointerEvent<HTMLDivElement>) {
     setPointer({ x: `${event.clientX}px`, y: `${event.clientY}px` });
   }
 
@@ -221,35 +235,44 @@ export default function AugastamAIPage() {
     <div
       className={`augastam-ai-page`}
       onPointerMove={handlePointerMove}
-      style={{ "--mx": pointer.x, "--my": pointer.y }}
+      style={{ "--mx": pointer.x, "--my": pointer.y } as CSSVars}
     >
       <div className="glow" aria-hidden="true" />
-      
 
       <main className="ai-main">
         <div className="brand">
           <span className="logo">AUGASTAM</span>
-          <span className="chip"><i /><b>AI</b></span>
+          <span className="chip">
+            <i />
+            <b>AI</b>
+          </span>
         </div>
 
         <h1 className="headline">
           {"Let technology handle the busywork. Keep the clinical focus human."
             .split(" ")
             .map((word, index) => (
-              <span className="w" style={{ "--i": index }} key={`${word}-${index}`}>{word} </span>
+              <span className="w" style={{ "--i": index } as CSSVars} key={`${word}-${index}`}>
+                {word}{" "}
+              </span>
             ))}
         </h1>
-        <p className="sub">
-          Trusted by 600+ Hospitals to improve outcomes across every stage
-        </p>
+        <p className="sub">Trusted by 600+ Hospitals to improve outcomes across every stage</p>
 
         <section className="grid">
           <article className="card">
             <div className="stage s1">
               <div className="paper">
                 <div className="ph">
-                  <div><b>Past Visit Summary</b><small>AI-generated from previous visits</small></div>
-                  <button className={`regen ${regenerating ? "busy" : ""}`} type="button" onClick={regenerate}>
+                  <div>
+                    <b>Past Visit Summary</b>
+                    <small>AI-generated from previous visits</small>
+                  </div>
+                  <button
+                    className={`regen ${regenerating ? "busy" : ""}`}
+                    type="button"
+                    onClick={regenerate}
+                  >
                     <RefreshIcon /> Regenerate
                   </button>
                 </div>
@@ -264,30 +287,53 @@ export default function AugastamAIPage() {
               </div>
             </div>
             <h3>Quick AI Summary</h3>
-            <p>Highlight key clinical details and potential risks to help doctors understand patient cases faster and make informed decisions.</p>
+            <p>
+              Highlight key clinical details and potential risks to help doctors understand patient
+              cases faster and make informed decisions.
+            </p>
           </article>
 
           <article className="card">
             <div className="stage s2">
               <div className={`fill ${listening ? "rec" : ""}`}>
-                <div className="top"><span>Fill Section</span><span aria-hidden="true">✕</span></div>
-                <div className="row_remove" style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
-                  <button className={`mic ${listening ? "on" : ""}`} type="button" onClick={toggleListening} aria-label="Start or stop listening">
+                <div className="top">
+                  <span>Fill Section</span>
+                  <span aria-hidden="true">✕</span>
+                </div>
+                <div className="row_remove" style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                  <button
+                    className={`mic ${listening ? "on" : ""}`}
+                    type="button"
+                    onClick={toggleListening}
+                    aria-label="Start or stop listening"
+                  >
                     <MicIcon />
                   </button>
-                  <span className="state">{listening ? "Listening…" : filled ? "Filled ✓" : "Tap to talk"}</span>
+                  <span className="state">
+                    {listening ? "Listening…" : filled ? "Filled ✓" : "Tap to talk"}
+                  </span>
                   <div className={`wave ${listening ? "active" : ""}`} aria-hidden="true">
-                    {Array.from({ length: 22 }, (_, index) => <span key={index} />)}
+                    {Array.from({ length: 22 }, (_, index) => (
+                      <span key={index} />
+                    ))}
                   </div>
                   <span className="timer">{`00:${String(seconds).padStart(2, "0")}`}</span>
                 </div>
-                <button className="stop" type="button" onClick={stopAndFill}>Stop &amp; Fill</button>
+                <button className="stop" type="button" onClick={stopAndFill}>
+                  Stop &amp; Fill
+                </button>
                 <div className="hint">{hint}</div>
-                <div className="field" ref={fieldRef}><b>Allergies:</b> <span>{spokenText}</span></div>
+                <div className="field" ref={fieldRef}>
+                  <b>Allergies:</b> <span>{spokenText}</span>
+                </div>
               </div>
             </div>
             <h3>Speech-to-text</h3>
-            <p>Convert doctor speech into accurate text in real time, reducing manual documentation during consultations. Capture clinical notes faster and help doctors focus more on patient care.</p>
+            <p>
+              Convert doctor speech into accurate text in real time, reducing manual documentation
+              during consultations. Capture clinical notes faster and help doctors focus more on
+              patient care.
+            </p>
           </article>
 
           <article className="card">
@@ -299,9 +345,13 @@ export default function AugastamAIPage() {
                       type="button"
                       key={item.date}
                       className={visitIndex === index ? "act" : ""}
-                      onClick={() => { setAutoVisit(false); setVisitIndex(index); }}
+                      onClick={() => {
+                        setAutoVisit(false);
+                        setVisitIndex(index);
+                      }}
                     >
-                      OP · {item.date}<small>{item.doctor}</small>
+                      OP · {item.date}
+                      <small>{item.doctor}</small>
                     </button>
                   ))}
                 </div>
@@ -309,18 +359,29 @@ export default function AugastamAIPage() {
                   <div className="fade">
                     <h5>AI Visit Summary</h5>
                     <div className="tags">
-                      {visit.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                      {visit.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
                     </div>
                     <ul>
-                      {visit.notes.map((note) => <li key={note}>{note}</li>)}
+                      {visit.notes.map((note) => (
+                        <li key={note}>{note}</li>
+                      ))}
                     </ul>
-                    <div className="dx"><b>Diagnosis</b><br />{visit.diagnosis}</div>
+                    <div className="dx">
+                      <b>Diagnosis</b>
+                      <br />
+                      {visit.diagnosis}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <h3>Visit Summary — powered by AI</h3>
-            <p>Highlight key clinical details and potential risks to help doctors understand patient cases faster and make informed decisions.</p>
+            <p>
+              Highlight key clinical details and potential risks to help doctors understand patient
+              cases faster and make informed decisions.
+            </p>
           </article>
         </section>
       </main>

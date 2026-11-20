@@ -1,8 +1,10 @@
 "use client";
 
-import Hero from "@/components/integrations/Hero";
-import HubDiagram from "@/components/integrations/HubDiagram";
-import Marquee from "@/components/integrations/Marquee";
+import Hero from "@/app/integrations/Hero";
+import HubDiagram from "@/app/integrations/HubDiagram";
+import Marquee from "@/app/integrations/Marquee";
+
+
 
 export default function IntegrationsClient() {
   return (
