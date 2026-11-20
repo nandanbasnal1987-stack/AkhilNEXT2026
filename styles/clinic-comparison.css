@@ -20,7 +20,7 @@
   --cc-chip-ink: #140f2a;
   --cc-glow: rgba(122, 79, 224, 0.35);
   --cc-dim: #c3c8da;
-
+  --blue: #0074c0;
   position: relative;
   isolation: isolate;
   min-height: 100vh;
@@ -68,15 +68,10 @@
 /* Section heading */
 
 .clinic-comparison-page h2 {
-  font-family:
-    "Bricolage Grotesque",
-    "DM Sans",
-    system-ui,
-    sans-serif;
 
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
-  font-size: clamp(34px, 5.6vw, 46px);
+  font-size: clamp(34px, 5.6vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 0 48px;
@@ -183,10 +178,12 @@
   bottom: 0;
   width: 4px;
 
-  background: linear-gradient(
+  /* background: linear-gradient(
     var(--cc-accent2),
     var(--cc-accent)
-  );
+  ); */
+
+  background-color: var(--blue);
 
   transform: scaleY(0);
   transform-origin: center;
@@ -220,11 +217,12 @@
 }
 
 .cc-comparison .cc-heading .cc-us {
-  background: linear-gradient(
+  background-color: var(--blue);
+  /* background: linear-gradient(
     135deg,
     var(--cc-accent2),
     var(--cc-accent)
-  );
+  ); */
 
   color: #ffffff;
 }
@@ -243,11 +241,12 @@
   height: 24px;
   border-radius: 50%;
 
-  background: linear-gradient(
+  /* background: linear-gradient(
     135deg,
     var(--cc-accent2),
     var(--cc-accent)
-  );
+  ); */
+  background-color: var(--blue);
 
   display: grid;
   place-items: center;
@@ -315,7 +314,7 @@
 }
 
 .cc-meter span.filled {
-  background: var(--cc-accent);
+  background-color: var(--blue);
   opacity: 0.75;
 
   transform-origin: left;
@@ -400,7 +399,7 @@
    DARK MODE
 ========================================= */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .clinic-comparison-page:not([data-theme="light"]) {
     --cc-bg: #0c1020;
     --cc-ink: #f1f2fb;
@@ -417,7 +416,7 @@
     --cc-glow: rgba(150, 120, 255, 0.45);
     --cc-dim: #3a4068;
   }
-}
+} */
 
 .clinic-comparison-page[data-theme="dark"] {
   --cc-bg: #0c1020;

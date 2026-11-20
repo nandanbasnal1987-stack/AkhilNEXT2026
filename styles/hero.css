@@ -183,3 +183,4 @@
 @media screen and (max-width:480px) and (min-width:360px) {
       .section-1 .hero{height: calc(100vh - 410px);min-height: 210px;}
 }
+

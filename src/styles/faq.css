@@ -3,10 +3,10 @@
   box-sizing:border-box;
    
 }
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) #section-13{
+/* @media (prefers-color-scheme:dark){html:not([data-theme="light"]) #section-13{
     --bg:#0c1320; --ink:#eef3fb; --soft:#aebbd0; --card:#151f33; --circle:#2a3856; --accent:#7fa2ff; --shadow:rgba(0,0,0,.4); color-scheme:dark;
   }
-}
+} */
 html[data-theme="dark"] #section-13{
     --bg:#0c1320; --ink:#eef3fb; --soft:#aebbd0; --card:#151f33; --circle:#2a3856; --accent:#7fa2ff; --shadow:rgba(0,0,0,.4); color-scheme:dark;
   ;color-scheme:dark}
@@ -20,7 +20,7 @@ html[data-theme="dark"] #section-13{
 #section-13 .intro{background: none; position:sticky;top:100px}
 
 
-#section-13 .intro h2{margin:0;font-weight:700;font-size:clamp(34px,4.4vw,50px);line-height:1.1;letter-spacing:-.02em;max-width:300px}
+#section-13 .intro h2{margin:0;font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1.1;letter-spacing:-.02em;max-width:300px}
 #section-13 .intro p{margin:20px 0 0;font-size:18px;line-height:1.7;max-width:340px}
 #section-13 .list{display:flex;flex-direction:column;gap:24px}
 #section-13 .item{background:var(--card);border-radius:8px;transition:box-shadow .3s,transform .3s}

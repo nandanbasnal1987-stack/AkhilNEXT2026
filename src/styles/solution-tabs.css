@@ -6,7 +6,6 @@
       --bg: #f4f8fc;         /* page background */
       --ink: #060d26;        /* headings */
       --text: #10162b;       /* body copy */
-      --line: #dfe6ee;       /* vertical grid lines */
       --pill: #e6f0f3;       /* badge background */
       --blue: #0074c0;       /* primary action blue */
 
@@ -34,7 +33,7 @@
       
     }
 /* Dark mode – only applies when user has NOT explicitly chosen light theme */
-@media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-5{
+/* @media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-5{
         --bg: #0b121c;
         --ink: #f2f6fb;
         --text: #e6ebf6;
@@ -54,7 +53,7 @@
         --pink2: #5b3466;
         --grey: #a3adc0;
       }
-}
+} */
 html[data-theme="dark"] #section-5{
         --bg: #0b121c;
         --ink: #f2f6fb;
@@ -153,7 +152,7 @@ html[data-theme="dark"] #section-5{
       border: 0;
       cursor: pointer;
       font: 700 clamp(15px, 1.4vw, 16px) Arial, Helvetica, sans-serif;
-      letter-spacing: -.5px;
+      /* letter-spacing: -.5px; */
       color: var(--tab-off);
       transition: color .3s, transform .3s;
       border-radius: 20px;

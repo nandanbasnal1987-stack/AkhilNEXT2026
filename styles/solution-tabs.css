@@ -35,7 +35,7 @@
     }
 /* Dark mode – only applies when user has NOT explicitly chosen light theme */
 @media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-5{
-        --bg: #0b121c;
+        /* --bg: #0b121c; */
         --ink: #f2f6fb;
         --text: #e6ebf6;
         --line: #1f2b3a;
@@ -153,7 +153,7 @@ html[data-theme="dark"] #section-5{
       border: 0;
       cursor: pointer;
       font: 700 clamp(15px, 1.4vw, 20px) Arial, Helvetica, sans-serif;
-      letter-spacing: -.5px;
+      /* letter-spacing: -.5px; */
       color: var(--tab-off);
       transition: color .3s, transform .3s;
       border-radius: 20px;

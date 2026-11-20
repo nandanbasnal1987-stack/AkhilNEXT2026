@@ -23,7 +23,7 @@
       }
 }
 html[data-theme="dark"] .section-1{
-        --nav: #101722;
+        /* --nav: #101722; */
         --nav-ink: #eef2f8;
         --blue: #2a93e0;
         --bd: #223044;

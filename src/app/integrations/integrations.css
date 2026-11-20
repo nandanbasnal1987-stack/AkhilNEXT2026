@@ -28,7 +28,7 @@
   min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .integrations-main {
     --bg: #0c1020;
     --ink: #f1f2fb;
@@ -43,7 +43,7 @@
     --pill: #1a2342;
     --glow: rgba(150, 120, 255, 0.45);
   }
-}
+} */
 
 :root[data-theme="dark"] .integrations-main {
   --bg: #0c1020;
@@ -76,8 +76,8 @@
 /* ====== headings ====== */
 .integrations-h1 {
   font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: clamp(38px, 7.2vw, 46px);
+  font-weight: 400;
+  font-size: clamp(38px, 7.2vw, 56px);
   line-height: 1.02;
   letter-spacing: -0.035em;
   margin: 34px 0 26px;

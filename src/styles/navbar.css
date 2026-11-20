@@ -3,11 +3,11 @@
       top: env(safe-area-inset-top, 0px);
       z-index: 50;
       height: 71px;
-      background: var(--nav);
+      /* background: var(--nav); */
       display: flex;
       align-items: center;
       padding: 0 86px 0 74px;
-      border-bottom: 1px solid var(--bd);
+      /* border-bottom: 1px solid var(--bd); */
       transition: box-shadow 0.3s;
     }
 .section-1 .nav.sh{

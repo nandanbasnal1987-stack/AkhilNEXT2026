@@ -20,7 +20,7 @@
       
     }
 /* Dark mode – only applies when user has NOT explicitly chosen light theme */
-@media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-2{
+/* @media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-2{
         --bg: #0b101c;
         --ink: #f2f4fb;
         --text: #b9c0d6;
@@ -32,7 +32,7 @@
         --grey: #98a0bb;
         --halo: rgba(120, 90, 230, .22);
       }
-}
+} */
 html[data-theme="dark"] #section-2{
         --bg: #0b101c;
         --ink: #f2f4fb;

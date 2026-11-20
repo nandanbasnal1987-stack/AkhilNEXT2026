@@ -1,5 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
-import AiAssistSection from "@/components/sections/AiAssistSection";
+import AiAssistSection from "@/components/sections/AiAssistSection2";
 import ConnectedClinicSection from "@/components/sections/ConnectedClinicSection";
 import JourneySection from "@/components/sections/JourneySection";
 import SolutionTabsSection from "@/components/sections/SolutionTabsSection";
@@ -11,12 +11,14 @@ import ContactSection from "@/components/sections/ContactSection";
 import FaqSection from "@/components/sections/FaqSection";
 import TransitionBanner from "@/components/sections/TransitionBanner";
 import ClinicComparison from "@/components/sections/ClinicComparison";
+import Testimonials from "@/components/features/Testimonials2";
 
 import Hero from "@/app/integrations/Hero";
 import HubDiagram from "@/app/integrations/HubDiagram";
 import Marquee from "@/app/integrations/Marquee";
 
 import "../integrations/integrations.css"; 
+import Testimonials2 from "@/components/features/Testimonials2";
 
 // In JS files, do NOT use "import type" or ": Metadata"
 export const metadata = {
@@ -31,8 +33,9 @@ export default function AugastamClinicPage() {
       <HeroSection />
 
       <main id="page-main">
-        <AiAssistSection />
-        <ConnectedClinicSection />
+        <AiAssistSection /> 
+        <Testimonials2 />       
+        <ConnectedClinicSection />        
         <JourneySection />
         <SolutionTabsSection />
         <PatientAppSection />
