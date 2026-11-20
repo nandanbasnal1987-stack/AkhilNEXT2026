@@ -12,7 +12,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import TransitionBanner from "@/components/sections/TransitionBanner";
 import ClinicComparison from "@/components/sections/ClinicComparison";
 import Testimonials from "@/components/features/Testimonials2";
-
+import GoLiveSteps from "@/components/sections/GoLiveSteps";
 import Hero from "@/app/integrations/Hero";
 import HubDiagram from "@/app/integrations/HubDiagram";
 import Marquee from "@/app/integrations/Marquee";
@@ -51,6 +51,8 @@ export default function AugastamClinicPage() {
           <Marquee />
           </div>
         </div>
+        
+        <GoLiveSteps />
         <ContactSection />
         <FaqSection />
       </main>

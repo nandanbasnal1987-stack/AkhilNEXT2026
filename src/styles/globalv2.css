@@ -1743,8 +1743,15 @@ span.error-text {font-size: 11px;color: #f00;}
 .pos-thumb-popup img { width: auto !important;}
 
 @media screen and (max-width: 767px) {
+  .akhil-logo { max-height: 46px;}
   img { max-width: 100%; height: auto;}
+  main .section-1 .copy {left: 20px; top: 20px;}
+  .section-1 h1.in {display: none; font-size: 25px;}
+  .logo-slider { display: none;}
+  .copy h2 { display: none;}
+  .copy p, .copy ul, .copy .btns.in { display: none;}
   .plateform { background-size: 100%; height: auto;}
+  .section-1 .scene img { height: 100% !important; object-fit: cover; object-position: right;}
   .cont { background-size: 100%;}
   .plateform * {margin: auto;width: auto;}
 .miracle { left: 0;}
@@ -2252,4 +2259,335 @@ body{margin:0}
 .mega-menu .navbar-content div h3 { white-space: pre-line;}
 .box-clients-details.aos-init.aos-animate {
     position: inherit;
+}
+
+
+
+.gl-panel {
+  
+  --panel: #ffffff;
+  --ink: #0c2238;
+  --muted: #53697e;
+  --card: #f1f7fc;
+  --edge: #cfe1f0;
+
+  --c1: #4fa3e8;
+  --c2: #2f8ae6;
+  --c3: #1f6fe0;
+  --c4: #1450b8;
+
+  width: 100%;
+  max-width: 1240px;
+  margin: auto;
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 32px;
+  box-shadow: 0 30px 80px rgba(31, 111, 224, .12);
+  padding: clamp(28px, 5vw, 72px) clamp(20px, 4vw, 64px) clamp(32px, 5vw, 64px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.gl-panel *,
+.gl-panel *::before,
+.gl-panel *::after {
+  box-sizing: border-box;
+}
+
+.gl-panel::before {
+  content: "";
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  right: -200px;
+  top: -320px;
+  background: radial-gradient(
+    closest-side,
+    rgba(91, 180, 255, .22),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.gl-head {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  box-shadow: none;
+  gap: 40px;
+  align-items: end;
+  position: relative;
+}
+
+.gl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--c3);
+  font-weight: 500;
+  background: #e8f2fc;
+  padding: 9px 18px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.gl-tag i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c3);
+  animation: gl-ping 2s infinite;
+}
+
+@keyframes gl-ping {
+  70% {
+    box-shadow: 0 0 0 10px rgba(159, 211, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 111, 224, 0);
+  }
+}
+
+.gl-panel h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0;
+}
+
+.gl-sub {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+  max-width: 440px;
+  justify-self: end;
+  margin: 0;
+}
+
+.gl-track {
+  position: relative;
+  margin-top: clamp(36px, 6vw, 80px);
+  padding: 0;
+}
+
+.gl-panel { box-shadow: none;}
+.gl-head { background: none; box-shadow: none;}
+
+.gl-ecg {
+  display: block;
+  width: 100%;
+  height: 200px;
+  overflow: visible;
+}
+
+.gl-beat {
+  fill: none;
+  stroke: url(#gl-gradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 4px 8px rgba(47, 138, 230, .35));
+}
+
+.gl-base {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-dasharray: 2 8;
+}
+
+.gl-nodes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gl-node {
+  position: absolute;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  display: grid;
+  place-items: center;
+  transform: scale(.6);
+  opacity: .35;
+  transition:
+    transform .6s cubic-bezier(.3, 1.6, .5, 1),
+    opacity .4s,
+    border-color .4s,
+    box-shadow .6s;
+}
+
+.gl-node svg,
+.gl-mobile-icon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: var(--col);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gl-node.on {
+  transform: scale(1);
+  opacity: 1;
+  border-color: var(--col);
+  box-shadow:
+    0 0 0 8px color-mix(in srgb, var(--col) 14%, transparent),
+    0 14px 30px color-mix(in srgb, var(--col) 28%, transparent);
+}
+
+.gl-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 8px;
+  position: relative;
+}
+
+.gl-step {
+  padding: 0 clamp(8px, 1.6vw, 24px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s, transform .6s;
+}
+
+.gl-step.on {
+  opacity: 1;
+  transform: none;
+}
+
+.gl-num {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--col);
+  margin-bottom: 10px;
+}
+
+.gl-step h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  font-size: clamp(17px, 1.7vw, 21px);
+  margin: 0 0 10px;
+}
+
+.gl-step p {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.55;
+  max-width: 230px;
+  margin: 0 auto;
+}
+
+.gl-mobile-icon {
+  display: none;
+}
+
+.gl-again {
+  margin: 44px auto 0;
+  display: block;
+  background: transparent;
+  color: var(--c3);
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font: 500 14px 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background .25s, border-color .25s;
+}
+
+.gl-again:hover {
+  background: var(--card);
+  border-color: var(--c2);
+}
+
+.gl-again:focus-visible {
+  outline: 2px solid var(--c3);
+  outline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+  .gl-head {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-sub {
+    justify-self: start;
+  }
+
+  .gl-ecg,
+  .gl-nodes {
+    display: none;
+  }
+
+  .gl-track {
+    margin-top: 36px;
+  }
+
+  .gl-steps {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gl-step {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    column-gap: 16px;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  .gl-mobile-icon {
+    grid-row: 1 / 4;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--col);
+    display: grid;
+    place-items: center;
+  }
+
+  .gl-mobile-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .gl-step p {
+    margin: 0;
+    max-width: none;
+  }
+}
+
+@media (min-width: 821px) {
+  .gl-mobile-icon {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-panel *,
+  .gl-panel *::before,
+  .gl-panel *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .gl-step,
+  .gl-node {
+    opacity: 1;
+    transform: none;
+  }
 }

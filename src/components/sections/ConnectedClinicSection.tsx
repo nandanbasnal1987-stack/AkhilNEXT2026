@@ -85,7 +85,7 @@ export default function ConnectedClinicSection() {
           </section>
 
            <div className="row">
-            <div className="col-5"> <section className="head rv" style={{"display":"block", textAlign:"left"}}>
+            <div className="col-md-5 col-sm-6 col-12"> <section className="head rv" style={{"display":"block", textAlign:"left"}}>
 
            
             <span className="chip">
@@ -139,8 +139,8 @@ export default function ConnectedClinicSection() {
               </div>
             </article>
           </div></div>
-          <div className="col-2"><span style={{width:'1px',height:'100%', background:'#d8d8d8',margin:'0 auto', display:'table'}}></span></div>
-            <div className="col-5"><section className="head second rv" id="section-3a" style={{"display":"block", textAlign:"left"}}>
+          <div className="col-md-2 col-sm-6 col-12"><span style={{width:'1px',height:'100%', background:'#d8d8d8',margin:'0 auto', display:'table'}}></span></div>
+            <div className="col-md-5 col-sm-6 col-12"><section className="head second rv" id="section-3a" style={{"display":"block", textAlign:"left"}}>
             <span className="chip">
               With Augastam
             </span>

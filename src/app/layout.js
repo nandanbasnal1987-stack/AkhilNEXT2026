@@ -43,6 +43,8 @@ export const viewport = {
 
 const GA_ID = 'G-8S2DQW0014';
 
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">

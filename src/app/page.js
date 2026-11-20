@@ -1,6 +1,7 @@
 import HomeView from '@/views/Home';
 import { pageMetadata } from '@/lib/seo';
 
+
 export const metadata = pageMetadata({
   path: "/",
   title: "India's Leading Hospital Management Software - Akhil Systems",

@@ -89,7 +89,7 @@ function AugastamSlider() {
         <>
        
             <div className='container-fluid'>
-                <div className='logo-slider'>
+                <div className='hero-logo'>
               
                 <Slider {...settings}>
                     {

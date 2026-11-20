@@ -90,7 +90,7 @@ function HeroLogo() {
       };
     return (
         <>
-        <div style={{width: '70%', marginTop: '150px'}}>
+        <div className='hero-logo' style={{width: '70%', marginTop: '150px'}}>
        <Slider {...settings}>
                     {
                         CData.map((value,idx) => (
