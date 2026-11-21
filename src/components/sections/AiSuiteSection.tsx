@@ -12,10 +12,10 @@ export default function AiSuiteSection() {
 
   return (
     <div className="merged-section" id="section-9" ref={ref}>
-      <section className="hero" id="sec9-hero">
+      <section className="hero d-none" id="sec9-hero">
         <div className="canvas" id="sec9-canvas">
           <h1>
-            From Conversation to Care, From Data to Decisions.
+            From Conversation to Care,<br></br> From Data to Decisions.
           </h1>
           <div className="sub">
             100% Self-Configurable and Customizable
@@ -63,7 +63,7 @@ export default function AiSuiteSection() {
           </div>
         </div>
       </section>
-      <section className="row one">
+      <section className="row one pt-5 mt-5">
         <div className="card">
           <div className="vis" id="sec9-wave"></div>
           <div className="cap">

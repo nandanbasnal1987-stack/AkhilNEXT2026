@@ -88,11 +88,11 @@ export default function ConnectedClinicSection() {
             <div className="col-md-5 col-sm-6 col-12"> <section className="head rv" style={{"display":"block", textAlign:"left"}}>
 
            
-            <span className="chip">
+            <span className="chip prob">
               The problem
             </span>
             <h2 className="h1">
-              Running a clinic should not mean running behind
+              Challenges with other softwares
             </h2>
             <p className="sub">
               When registration, appointments, queue handling, clinical notes and billing live in disconnected processes, staff spend time switching systems instead of moving the patient journey forward.
@@ -141,7 +141,7 @@ export default function ConnectedClinicSection() {
           </div></div>
           <div className="col-md-2 col-sm-6 col-12"><span style={{width:'1px',height:'100%', background:'#d8d8d8',margin:'0 auto', display:'table'}}></span></div>
             <div className="col-md-5 col-sm-6 col-12"><section className="head second rv" id="section-3a" style={{"display":"block", textAlign:"left"}}>
-            <span className="chip">
+            <span className="chip solution">
               With Augastam
             </span>
             <h2 className="h2">
@@ -179,7 +179,7 @@ export default function ConnectedClinicSection() {
               </span>
               <div className="cap">
                 <h3>
-                  Smarter Queue Management
+                  Smarter Queue Management &amp; Billing
                 </h3>
                 <p>
                   Keep track of patient tokens and waiting queues in real time. Help your staff manage patient flow and reduce confusion throughout the clinic.
@@ -196,10 +196,10 @@ export default function ConnectedClinicSection() {
               </span>
               <div className="cap">
                 <h3>
-                  Simplified Billing & Collections
+                  No Typing. Only Voice. Just 100% Care.
                 </h3>
                 <p>
-                  Track patient visits, collections, and daily clinic activity from one dashboard. Get clearer insights to make informed decisions and manage your practice better.
+                  Now AI Availble in 80+ Indian &amp; International Languages.
                 </p>
               </div>
             </article>

@@ -7,9 +7,9 @@ import PatientAppSection from "@/components/sections/PatientAppSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import AiSuiteSection from "@/components/sections/AiSuiteSection";
 import PrivacySection from "@/components/sections/PrivacySection";
-import ContactSection from "@/components/sections/ContactSection";
+// import ContactSection from "@/components/sections/ContactSection";
 import FaqSection from "@/components/sections/FaqSection";
-import TransitionBanner from "@/components/sections/TransitionBanner";
+//import TransitionBanner from "@/components/sections/TransitionBanner";
 import ClinicComparison from "@/components/sections/ClinicComparison";
 import Testimonials from "@/components/features/Testimonials2";
 import GoLiveSteps from "@/components/sections/GoLiveSteps";
@@ -39,7 +39,7 @@ export default function AugastamClinicPage() {
         <JourneySection />
         <SolutionTabsSection />
         <PatientAppSection />
-        <TransitionBanner />
+        {/* <TransitionBanner /> */}
         <BenefitsSection />
         <AiSuiteSection />
         <PrivacySection />
@@ -53,7 +53,7 @@ export default function AugastamClinicPage() {
         </div>
         
         <GoLiveSteps />
-        <ContactSection />
+        {/* <ContactSection /> */}
         <FaqSection />
       </main>
     </>

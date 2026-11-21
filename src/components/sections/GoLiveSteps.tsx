@@ -272,9 +272,9 @@ export default function GoLiveSteps() {
               y1="0"
               y2="0"
             >
-              <stop offset="0" stopColor="#7cc0ff" />
-              <stop offset=".45" stopColor="#2f8ae6" />
-              <stop offset="1" stopColor="#1450b8" />
+              <stop offset="0" stopColor="#d594ef" />
+              <stop offset=".45" stopColor="#a762e8" />
+              <stop offset="1" stopColor="#d594ef" />
             </linearGradient>
           </defs>
 

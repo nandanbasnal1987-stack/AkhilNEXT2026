@@ -11,7 +11,7 @@ const comparisonData: [string, string, string, number][] = [
   ["ABDM and NABH digital standards", "Built in", "No", 0],
   ["Coding: SNOMED CT, ICD-11, CPT, LOINC", "Yes", "Partial", 2],
   ["Customisable forms and workflows", "100%", "Fixed templates", 1],
-  ["Patient app and WhatsApp", "Yes", "Often an add-on", 2],
+  ["Patient App and WhatsApp", "Yes", "Often an add-on", 2],
   ["Grows from one doctor to many", "Yes", "Limited", 1],
 ];
 

@@ -7,27 +7,30 @@ import "@/styles/faq.css";
 const faqs = [
   {
     question: "What is Augastam Clinic?",
-    answer: "Augastam Clinic is a digital healthcare management platform developed by Akhil Systems Pvt. Ltd. It is designed to help clinics, doctors, and healthcare professionals manage their daily clinical operations through a modern, integrated digital system.",
+    answer: "Augastam Clinic is an AI-powered EMR and clinic management software from Akhil Systems Pvt. Ltd. It covers records, appointments, billing, patient app, WhatsApp, SMS and email for single-doctor clinics and polyclinics.",
+  },
+  {
+    question: "Who is Augastam Clinic for?",
+    answer: "It is built for single-doctor clinics, multi-doctor polyclinics and specialty clinics in India and abroad. Clinics can start small and scale to multiple doctors or locations on the same platform.",
   },
   {
     question: "Is Augastam Clinic ABDM compliant?",
-    answer: "Akhil Systems has publicly stated that its healthcare solutions support ABDM integration and that the company has achieved ABDM M1, M2 and M3 certifications. However, I could not independently verify that the specific product Augastam Clinic has completed all ABDM certification requirements.",
-  },
-  {
-    question: "Why are doctors opting for Augastam Clinic software, for patient and clinic management?",
-    answer: "Doctors are opting for Augastam Clinic because it helps simplify everyday clinical work, reduce administrative effort, organise patient information and make clinic operations more efficient.",
+    answer: "Yes, Augastam Clinic is built to ABDM requirements [confirm: milestones certified (M1, M2, M3) and certificate date]. It supports ABDM-aligned workflows so clinics can take part in India’s digital health ecosystem.",
   },
   {
     question: "Does Augastam Clinic follow NABH digital standards?",
-    answer: "Augastam Clinic can be positioned around NABH Digital Health Standards, but I cannot confirm that Augastam Clinic itself has received NABH CMS certification.",
+    answer: "Augastam Clinic is designed to meet NABH Platinum-level digital standards [confirm official wording and evidence]. This helps clinics prepare for accreditation with documented, standards-based digital records.",
+  },
+  {
+    question: "Which languages does Augastam Clinic support?",
+    answer: "Augastam Clinic supports 80+ Indian and international languages through AI, including Hindi, English and Arabic [confirm scope for voice, screens, printouts and patient messages].",
   },
   {
     question: "Which medical coding standards does it support?",
-    answer: "For Augastam Clinic by Akhil Systems, medical coding standards are important for accurate clinical documentation, consistent diagnosis recording, laboratory reporting and healthcare interoperability.",
-  },
-  {
+    answer: "It supports SNOMED CT, ICD-11, CPT and LOINC, with HL7 FHIR interoperability. Diagnosis and lab codes can be mapped automatically to keep records consistent and claim-ready.",
+  },{
     question: "Does the AI replace the doctor?",
-    answer: "In Augastam Clinic, AI should be positioned as a clinical assistant that supports doctors, not as a replacement for their medical expertise, judgement or decision-making.",
+    answer: "No. The AI drafts notes, summaries and care plans from the consultation, and the doctor reviews, edits and signs every record. The clinician always makes the clinical decision.",
   },
 ];
 

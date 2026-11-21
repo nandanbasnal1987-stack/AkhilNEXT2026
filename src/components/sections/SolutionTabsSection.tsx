@@ -16,7 +16,7 @@ export default function SolutionTabsSection() {
           ONE SOLUTION
         </span>
         <h1>
-          From Conversation to Care, From Data to Decisions.
+          From Conversation to Care,<br></br> From Data to Decisions.
         </h1>
         <div className="tabs" role="tablist" id="sec5-tabs">
           <div className="ind" id="sec5-ind"></div>

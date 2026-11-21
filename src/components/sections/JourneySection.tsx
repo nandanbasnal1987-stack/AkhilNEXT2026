@@ -63,10 +63,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                Consult
+                Bill & Pay
               </h3>
               <p>
-                AI-assisted notes, voice to text and order sets
+                 Billing, invoices and online payment through the patient app or at the counter.
               </p>
             </div>
           </div>
@@ -76,10 +76,10 @@ export default function JourneySection() {
             </div>
             <div>
               <h3>
-                Bill & Pay
+                Consult
               </h3>
               <p>
-                Billing, invoices and online payment through the patient app
+               AI-assisted notes, voice to text and order sets
               </p>
             </div>
           </div>

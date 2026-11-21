@@ -2432,7 +2432,7 @@ body{margin:0}
   width: 34px;
   height: 34px;
   fill: none;
-  stroke: var(--col);
+  stroke: #a762e8;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -2441,10 +2441,10 @@ body{margin:0}
 .gl-node.on {
   transform: scale(1);
   opacity: 1;
-  border-color: var(--col);
+  border-color: #d594ef;
   box-shadow:
-    0 0 0 8px color-mix(in srgb, var(--col) 14%, transparent),
-    0 14px 30px color-mix(in srgb, var(--col) 28%, transparent);
+    0 0 0 8px color-mix(in srgb, #d594ef 14%, transparent),
+    0 14px 30px color-mix(in srgb, #d594ef 28%, transparent);
 }
 
 .gl-steps {
@@ -2471,7 +2471,7 @@ body{margin:0}
   font-family: 'Sora', sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: var(--col);
+  color: #a762e8;
   margin-bottom: 10px;
 }
 

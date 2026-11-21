@@ -97,3 +97,14 @@ html[data-theme="dark"] #section-3{
 .cards.wide h3 {
     color: #00d7ab !important;
 }
+
+
+#section-3 .chip.prob {
+      background: #ffe6e6;
+    color: #f00;
+}
+
+#section-3 .chip.solution {
+          color: #177360;
+    background: #b6ede2;
+}
