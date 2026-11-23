@@ -175,7 +175,7 @@ function Augastam() {
                     <div className='col-md-3'>
                     <div className='box-prod-col'>
                     <h3><span><img src={specialties} width={60} style={{ marginRight: "10px"}} /></span>Multi-specialties </h3>
-                    <p>From GP to ophthalmology, Augastam effortlessly maps specialty-specific clinical pathways and documentation formats, saving clinician's time.</p>
+                    <p>From GP to ophthalmology, Augastam effortlessly maps specialty-specific clinical pathways and documentation formats, saving clinician&apos;s time.</p>
                       <div className='prod-strip'><span></span></div>
 
                       <a href="#void" className='knowmore'>Know More</a>

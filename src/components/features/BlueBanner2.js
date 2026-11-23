@@ -20,7 +20,7 @@ function BlueBanner2() {
             <div className='row clinical-banner'>
                 <div className='col-md-6' data-aos="fade-left">
                     <h2 className='text-left pt-0'>Got Questions?<span></span><br /> We’ve Got You Covered</h2>
-                    <p className='text-left'>Whether you're ready to transform your healthcare operations or just exploring, drop us a line we're listening.</p>
+                    <p className='text-left'>Whether you&apos;re ready to transform your healthcare operations or just exploring, drop us a line we&apos;re listening.</p>
               
                     <div className='box-letfuture-inp mt-4' style={{marginLeft:'0'}}>
                       <InputWithSend />

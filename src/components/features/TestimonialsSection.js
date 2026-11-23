@@ -4,7 +4,7 @@ import React from 'react';
 const gridImage1 = "/images/imagebg.webp";
 const gridImage2 = "/images/imagebg1.webp";
 
-const TestimonialsSection = React.memo(() => {
+const TestimonialsSection = React.memo(function TestimonialsSection() {
   return (
     <section className='plr-60'>
       <div className='container-fluid box-wrapper'>
@@ -66,7 +66,7 @@ const TestimonialsSection = React.memo(() => {
                       <p>CEO</p>
                     </h2>
                     <p>
-                      Since adopting Miracle, we've achieved full digital transformation- billing leakages have been virtually eliminated thanks to automated charge capture and real-time dashboards. The system's analytics and reporting capabilities have empowered our finance and operations teams.
+                      Since adopting Miracle, we&apos;ve achieved full digital transformation- billing leakages have been virtually eliminated thanks to automated charge capture and real-time dashboards. The system&apos;s analytics and reporting capabilities have empowered our finance and operations teams.
                     </p>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const TestimonialsSection = React.memo(() => {
                       <p></p>
                     </h2>
                     <p>
-                      I've used Akhil Systems' Miracle On Cloud for a year—it's stable, reliable, and covers everything from patient records to billing, lab, and pharmacy. Great support, no major issues. Highly recommended for mid-size healthcare organizations.
+                      I&apos;ve used Akhil Systems&apos; Miracle On Cloud for a year—it&apos;s stable, reliable, and covers everything from patient records to billing, lab, and pharmacy. Great support, no major issues. Highly recommended for mid-size healthcare organizations.
                     </p>
                   </div>
                 </div>

@@ -11,9 +11,9 @@ const reqs = "/images/DemoReq.svg";
 function OurClients() {
     return (
         <>
-            <div class="container-fluid p-5 ">
-                <div class="row">
-                    <div class="col-md-6 pt-5 client bg-danger">
+            <div className="container-fluid p-5 ">
+                <div className="row">
+                    <div className="col-md-6 pt-5 client bg-danger">
                         <h5>Manage all your Data</h5>
                         <h2>Grow with Miracle on Cloud</h2><h7>  is an initiative from Akhil Systems Pvt Ltd having  nearly 3<br></br> decades of
                             exposure in healthcare IT to digitalize smaller <br></br> healthcare facilities
@@ -25,7 +25,7 @@ function OurClients() {
                         <img className='btncss mt-3' src={reqs} height={50} alt='image' />
 
                     </div>
-                    <div class="col-md-6">
+                    <div className="col-md-6">
                         <img src={client} className='product-image' width="500" height={350} alt="Responsive image" />
 
                     </div>

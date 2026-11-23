@@ -98,7 +98,7 @@ function Cslider() {
                 <Slider {...settings}>
                     {
                         CData.map((value,idx) => (
-                            <div className='col-md-8'>
+                            <div key={idx} className='col-md-8'>
                                 
                                 <img src={value.image} height={50}  alt='image' />
                               

@@ -32,7 +32,7 @@ const AboutUs = () => {
                     At Akhil Systems, we understand that every healthcare setup is different — that’s why we offer adaptable Hospital Information System and Electronic Medical Record Software tailored to your workflow and goals.
                   </p>
         
-                  <button className='main_btn' data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Know More<i class="fa-solid fa-angles-right"></i></button>
+                  <button className='main_btn' data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Know More<i className="fa-solid fa-angles-right"></i></button>
         
                 </div>
               </div>

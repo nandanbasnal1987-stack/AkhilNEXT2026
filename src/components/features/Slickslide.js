@@ -115,7 +115,7 @@ function Slickslide() {
                             {
                                 SData.map((value) => (
                                     
-                                        <img src={value.image} alt='Legacy of Caring Images' loading='lazy' />
+                                        <img key={value.image} src={value.image} alt='Legacy of Caring Images' loading='lazy' />
                                    
 
                                 ))

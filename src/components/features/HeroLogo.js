@@ -94,7 +94,7 @@ function HeroLogo() {
        <Slider {...settings}>
                     {
                         CData.map((value,idx) => (
-                            <div>
+                            <div key={idx}>
                                 
                                 <img src={value.image} width={100}  alt='image' className='text-center' />
                               

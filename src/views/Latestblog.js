@@ -37,7 +37,7 @@ function Latestblog() {
 
             {
              Cdata.map((value)=>(
-                <Card imag ={value.cart} title = {value.title} desc = {value.desc}/>
+                <Card key={value.title} imag ={value.cart} title = {value.title} desc = {value.desc}/>
              ))            
                 
             }    

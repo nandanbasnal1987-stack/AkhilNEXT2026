@@ -92,7 +92,7 @@ export default function AiSuiteSection() {
                     Speaker
                   </b>
                   <br />
-                  Hello Raman, how are you doing today? I'm doing great, doctor. I'm suffering from viral fever for five days. On a scale of one to 10, how much would you score it? I would score it 8.5.
+                  Hello Raman, how are you doing today? I&apos;m doing great, doctor. I&apos;m suffering from viral fever for five days. On a scale of one to 10, how much would you score it? I would score it 8.5.
                 </div>
                 <div className="msg">
                   <b>

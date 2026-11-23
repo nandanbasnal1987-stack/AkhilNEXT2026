@@ -16,10 +16,13 @@ export const STATUSES = [
 export type Status = (typeof STATUSES)[number];
 
 
-export type PlanCode = 'free' | 'standard' | 'custom';
+/** Any plan code stored on the server (free, standard, custom, or one that was added). */
+export type PlanCode = string;
 export type BillingCycle = 'monthly' | 'annual';
 
-export interface Facility { facility_id: string; facility_name: string }
+/** Address of one facility (saved on its facility record when the clinic is created). */
+export interface FacilityAddress { address_line_1?: string; city?: string; state?: string; pincode?: string; country?: string }
+export interface Facility { facility_id: string; facility_name: string; address?: FacilityAddress }
 export interface Plan {
   code: PlanCode;
   name: string;
@@ -57,7 +60,11 @@ export interface RequestFields {
   city: string;
   state: string;
   pincode: string;
-  number_of_providers: number;
+  /** India (default) or Others. */
+  country?: string;
+  /** Coupon typed on the plan step and the currency the prices were shown in. */
+  coupon_code?: string;
+  currency?: string;
   clinic_registration_id: string;
   additional_info?: string;
   facilities?: Facility[];
@@ -194,7 +201,40 @@ function billingFromApi(data: DraftData): DraftData {
   return out;
 }
 
+/** One option of a global dropdown (GLOBALS collection on the backend). */
+export interface GlobalOption { global_id?: string; code: string; label: string; sort_order?: number; meta?: Record<string, any> }
+
+/** Pricing (GLOBALS types currency, plan_rate, festive_offer, coupon): see GET pricing/plans and pricing/quote on the backend. */
+export interface AppliedOffer { kind: 'festive' | 'coupon'; code: string; label: string; description: string; discount: number }
+export interface PricingCurrency { code: string; symbol: string; label: string; decimals: number; rate_per_usd: number; source: string; country: string | null; matched: boolean }
+export interface PriceBlock { list_price: number; list_price_formatted: string; discount_total: number; total: number; total_formatted: string; per_month_total: number; offers_applied: AppliedOffer[]; valid_until: string | null }
+export interface PricingPlan {
+  code: PlanCode; name: string; blurb: string; max_facilities: number | null; price_usd_monthly: number | null; features: string[]; facilities: string; note: string | null;
+  monthly: PriceBlock; annual: PriceBlock & { saving_vs_monthly: number; saving_formatted: string }; price_source: string;
+}
+export interface PricingOffer { code: string; label: string; description: string; banner: string; discount_type: 'percent' | 'fixed'; value: number; valid_from: string | null; valid_to: string | null }
+export interface PricingPlans { currency: PricingCurrency; plans: PricingPlan[]; offers: { active: PricingOffer[]; upcoming: PricingOffer[] } }
+export interface Quote {
+  plan: { code: PlanCode; name: string; max_facilities: number | null }; billing_cycle: BillingCycle; currency: PricingCurrency;
+  prices: { monthly: number; annual: number; annual_saving: number; monthly_formatted: string; annual_formatted: string; annual_saving_formatted: string; annual_per_month: number };
+  list_price: number; list_price_formatted: string; offers_applied: AppliedOffer[]; offers_ignored: { code: string; reason: string }[];
+  rates?: { source: string; updated_at: string; attribution: string } | null;
+  coupon: { code: string; valid: boolean; reason?: string } | null; discount_total: number; discount_total_formatted: string;
+  total: number; total_formatted: string; per_month_total: number; valid_until: string | null; what_you_get: string[]; facilities: string; note: string | null;
+}
+export interface PricingCurrencyOption { code: string; label: string; symbol: string; decimals: number; rate_per_usd: number; source: 'live' | 'manual' }
+export interface PricingCurrencies { currencies: PricingCurrencyOption[]; rates_updated_at: string | null; rates_source: string | null; attribution: string }
+export interface PricingQuery { country?: string; currency?: string }
+export interface QuoteQuery extends PricingQuery { plan_code: string; billing_cycle: BillingCycle; coupon_code?: string; email_id?: string }
+
 const real = {
+  globals: (type: string) => http<{ items: GlobalOption[] }>(`/globals${qs({ type })}`).then((r) => r.items),
+  /** One page of a dropdown list, optionally filtered by text (the server searches label, code and description). */
+  pricingCurrencies: () => http<PricingCurrencies>('/pricing/currencies'),
+  pricingPlans: (q: PricingQuery) => http<PricingPlans>(`/pricing/plans${qs({ country: q.country, currency: q.currency })}`),
+  pricingQuote: (q: QuoteQuery) => http<Quote>(`/pricing/quote${qs({ plan_code: q.plan_code, billing_cycle: q.billing_cycle, country: q.country, currency: q.currency, coupon_code: q.coupon_code, email_id: q.email_id })}`),
+  globalsPage: (type: string, search: string, page: number, limit: number) =>
+    http<{ items: GlobalOption[]; total: number }>(`/globals${qs({ type, search: search || undefined, page, limit })}`),
   plans: () => http<{ plans: Plan[] }>('/plans').then((r) => r.plans),
   facilities: () => http<{ facilities: Facility[] }>('/facilities').then((r) => r.facilities),
   saveDraft: (p: DraftPayload) => http<DraftSave>('/draft', 'POST', { ...p, data: billingToApi(p.data) }),
@@ -278,7 +318,6 @@ function addRequest(
     city: 'Dehradun',
     state: 'Uttarakhand',
     pincode: '248001',
-    number_of_providers: 5,
     clinic_registration_id: `REG-${1000 + db.seq}`,
     consent: true,
     submitted_at: ago(daysAgo),
@@ -338,7 +377,6 @@ function mockStepErrorsFull(step: number, d: DraftData, planCode: PlanCode): Rec
     else if (plan.max_facilities !== null && f.length > plan.max_facilities) {
       e.facilities = `The ${plan.name} plan includes up to ${plan.max_facilities} ${plan.max_facilities === 1 ? 'facility' : 'facilities'}.`;
     }
-    if (!(Number(d.number_of_providers) >= 1)) e.number_of_providers = 'Select the number of providers.';
   }
   if (step === 2) {
     need('contact_person', 'Enter the contact person.');
@@ -346,7 +384,7 @@ function mockStepErrorsFull(step: number, d: DraftData, planCode: PlanCode): Rec
     need('city', 'Enter the city.');
     need('state', 'Enter the state.');
     need('pincode', 'Enter the PIN / postal code.');
-    need('clinic_registration_id', 'Enter the MCI Number.');
+    need('clinic_registration_id', 'Enter the registration / ID number.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s(d, 'email_id'))) e.email_id = 'Enter a valid email address.';
     if (s(d, 'phone').replace(/\D/g, '').length < 7) e.phone = 'Enter a valid phone number.';
   }
@@ -368,6 +406,26 @@ const flatten = (p: SubmitPayload): DraftData => ({
 });
 
 const mock: OnboardingApi = {
+  async globals() {
+    return []; // the wizard keeps its built-in list in demo mode
+  },
+
+  async globalsPage() {
+    return { items: [], total: 0 };
+  },
+
+  async pricingCurrencies(): Promise<PricingCurrencies> {
+    throw new ApiError('Live prices need the server.');
+  },
+
+  async pricingPlans(): Promise<PricingPlans> {
+    throw new ApiError('Live prices need the server.'); // the plan step then shows the built-in USD list prices
+  },
+
+  async pricingQuote(): Promise<Quote> {
+    throw new ApiError('Live prices need the server.');
+  },
+
   async plans() {
     await wait(200);
     return catalog();

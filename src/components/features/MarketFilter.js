@@ -8,16 +8,16 @@ const data = [
   { id: 3, name: "Machine Integration", category: "Machine Integration" },
   { id: 4, name: "Sales", category: "Sales" },
   { id: 5, name: "Marketing", category: "Marketing" },
-  { id: 5, name: "Analytics", category: "Analytics" },
-  { id: 5, name: "Customer Service", category: "Customer Service" },
-  { id: 5, name: "Productivity", category: "Productivity" },
-  { id: 5, name: "IT & Administration", category: "IT & Administration" },
+  { id: 6, name: "Analytics", category: "Analytics" },
+  { id: 7, name: "Customer Service", category: "Customer Service" },
+  { id: 8, name: "Productivity", category: "Productivity" },
+  { id: 9, name: "IT & Administration", category: "IT & Administration" },
 ];
 
 function MarketFilter() {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const categories = ["Finance", "Pharmacy", "Machine Integration", "Sales", "Marketing", "Analytics", "Customer Service", "Customer Service", "Productivity", "IT & Administration"];
+  const categories = ["Finance", "Pharmacy", "Machine Integration", "Sales", "Marketing", "Analytics", "Customer Service", "Productivity", "IT & Administration"];
 
   // Toggle checkbox
   const handleCheckboxChange = (category) => {
@@ -40,7 +40,7 @@ function MarketFilter() {
 
       {/* Checkboxes */}
       {categories.map((cat) => (
-        <p><label key={cat} style={{ marginRight: "15px" }}>
+        <p key={cat}><label style={{ marginRight: "15px" }}>
           <input
             type="checkbox"
             value={cat}

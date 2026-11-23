@@ -33,7 +33,7 @@ function Accordion() {
                     data-bs-parent="#accordionExample"
                 >
                     <div className="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default...
+                        <strong>This is the first item&apos;s accordion body.</strong> It is shown by default...
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ function Accordion() {
                     data-bs-parent="#accordionExample"
                 >
                     <div className="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default...
+                        <strong>This is the second item&apos;s accordion body.</strong> It is hidden by default...
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@ function Accordion() {
                     data-bs-parent="#accordionExample"
                 >
                     <div className="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default...
+                        <strong>This is the third item&apos;s accordion body.</strong> It is hidden by default...
                     </div>
                 </div>
             </div>

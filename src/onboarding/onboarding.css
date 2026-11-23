@@ -262,7 +262,7 @@
 .ob-root .w-dialog {
   position: relative; display: flex; flex-direction: column; width: min(41.25rem, 100%); max-height: min(94dvh, 920px);
   border-radius: 1.6rem; border: 1px solid var(--border); overflow: hidden;
-  background: #ffffff; backdrop-filter: blur(22px);
+  background: var(--card); backdrop-filter: blur(22px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); animation: w-pop 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .ob-root .w-inline { max-height: none; width: min(45rem, 100%); margin: 0 auto; overflow: visible; box-shadow: var(--shadow); background: var(--card); }
@@ -614,3 +614,124 @@
 @media (max-width: 767px) {
 .ob-root .header-row { grid-template-columns: 1fr auto; }
 }
+
+/* ---- plan step (PlanStep.tsx): cycle + currency bar, plan cards, coupon, price summary ---- */
+.ob-root .pl { display: grid; gap: 0.9rem; min-width: 0; }
+.ob-root .pl-offers { display: grid; gap: 0.35rem; padding: 0.65rem 0.85rem; border-radius: 0.9rem; border: 1px solid color-mix(in srgb, #f59e0b 45%, transparent); background: color-mix(in srgb, #f59e0b 12%, transparent); }
+.ob-root .pl-offers p { display: flex; align-items: center; gap: 0.45rem; margin: 0; font-size: 0.86rem; }
+.ob-root .pl-offers svg { color: #f59e0b; flex: none; }
+.ob-root .pl-offers span { color: var(--muted); }
+.ob-root .pl-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.ob-root .pl-bar .w-cycle { flex: 1 1 240px; }
+.ob-root .pl-cur { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+.ob-root .pl-cur select { min-width: 7.5rem; }
+.ob-root .pl-list { display: grid; gap: 0.6rem; margin: 0; padding: 0; border: 0; min-width: 0; }
+.ob-root .pl-card {
+  position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.2rem 0.85rem; padding: 0.95rem 1.05rem;
+  border-radius: 1.1rem; border: 1px solid var(--border); background: color-mix(in srgb, var(--secondary) 55%, transparent); cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.ob-root .pl-card:hover { border-color: color-mix(in srgb, var(--primary) 55%, transparent); }
+.ob-root .pl-card.on { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 9%, var(--card)); box-shadow: 0 8px 26px color-mix(in srgb, var(--primary) 16%, transparent); }
+.ob-root .pl-card input { position: absolute; opacity: 0; pointer-events: none; }
+.ob-root .pl-card input:focus-visible ~ .pl-dot { outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent); outline-offset: 2px; }
+.ob-root .pl-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); display: grid; place-items: center; color: #fff; }
+.ob-root .pl-card.on .pl-dot { background: var(--primary); border-color: var(--primary); }
+.ob-root .pl-main { display: grid; min-width: 0; }
+.ob-root .pl-main small { color: var(--muted); font-size: 0.8rem; }
+.ob-root .pl-price { display: grid; justify-items: end; text-align: right; gap: 0.05rem; }
+.ob-root .pl-price b { font-size: 1.05rem; white-space: nowrap; }
+.ob-root .pl-price b i { font-style: normal; font-weight: 500; font-size: 0.78rem; color: var(--muted); margin-left: 0.15rem; }
+.ob-root .pl-price s { font-size: 0.78rem; color: var(--muted); }
+.ob-root .pl-price small { font-size: 0.74rem; color: var(--muted); }
+.ob-root .pl-price .pl-save { color: #22c55e; font-weight: 600; }
+.ob-root .pl-feats { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.3rem 1rem; margin: 0.6rem 0 0; padding: 0.7rem 0 0; list-style: none; border-top: 1px dashed var(--border); }
+.ob-root .pl-feats li { display: flex; align-items: flex-start; gap: 0.4rem; font-size: 0.82rem; }
+.ob-root .pl-feats svg { flex: none; margin-top: 2px; color: #22c55e; }
+.ob-root .pl-coupon { display: grid; gap: 0.4rem; }
+.ob-root .pl-coupon > label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.86rem; font-weight: 600; }
+.ob-root .pl-coupon > div { display: flex; gap: 0.5rem; }
+.ob-root .pl-coupon input { flex: 1; min-width: 0; text-transform: uppercase; letter-spacing: 0.04em; }
+.ob-root .pl-coupon .w-ms-control { width: auto; padding: 0 1rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+.ob-root .pl-ok, .ob-root .pl-bad, .ob-root .pl-note { display: flex; align-items: center; gap: 0.4rem; margin: 0; font-size: 0.82rem; }
+.ob-root .pl-ok { color: #22c55e; }
+.ob-root .pl-bad { color: #f87171; }
+.ob-root .pl-note { color: var(--muted); }
+.ob-root .pl-sum { padding: 0.95rem 1.05rem; border-radius: 1.1rem; border: 1px solid var(--border); background: color-mix(in srgb, var(--secondary) 70%, transparent); }
+.ob-root .pl-sum-h { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.92rem; }
+.ob-root .pl-sum dl { display: grid; gap: 0.35rem; margin: 0; }
+.ob-root .pl-sum dl > div { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.85rem; }
+.ob-root .pl-sum dt { color: var(--muted); }
+.ob-root .pl-sum dd { margin: 0; font-weight: 600; text-align: right; }
+.ob-root .pl-sum .pl-disc dd { color: #22c55e; }
+.ob-root .pl-sum .pl-total { margin-top: 0.3rem; padding-top: 0.55rem; border-top: 1px solid var(--border); font-size: 1rem; }
+.ob-root .pl-sum .pl-total dt { color: var(--fg); font-weight: 700; }
+.ob-root .pl-sum .pl-total dd { font-size: 1.15rem; color: var(--primary-text); }
+.ob-root .pl-fine { margin: 0.6rem 0 0; font-size: 0.76rem; color: var(--muted); }
+.ob-root .spin { animation: pl-spin 0.9s linear infinite; }
+@keyframes pl-spin { to { transform: rotate(360deg); } }
+@media (max-width: 520px) { .ob-root .pl-card { grid-template-columns: auto 1fr; } .ob-root .pl-price { grid-column: 2; justify-items: start; text-align: left; } }
+@media (prefers-reduced-motion: reduce) { .ob-root .spin { animation: none; } }
+.ob-root .pl-cur .w-pp { min-width: 15.5rem; }
+.ob-root .pl-cur input { text-overflow: ellipsis; }
+/* currency picker: same look as the form's other selects (the browser default was a white box with pale text in dark mode) */
+.ob-root .pl-cur select {
+  appearance: none; min-width: 8.5rem; padding: 0.6rem 2.2rem 0.6rem 0.9rem; font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--fg);
+  border-radius: 0.8rem; border: 1px solid var(--border); background-color: var(--card); color-scheme: light dark; cursor: pointer; outline: none;
+  background-repeat: no-repeat; background-position: right 0.8rem center; background-size: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ob-root .pl-cur select:hover { border-color: color-mix(in srgb, var(--primary) 55%, transparent); }
+.ob-root .pl-cur select:focus-visible { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent); }
+.ob-root .pl-cur select option { background: var(--card); color: var(--fg); }
+.ob-root .pl-cur span { white-space: nowrap; }
+/* coupon box: same look as the form's other inputs */
+.ob-root .pl-coupon input {
+  padding: 0.7rem 1rem; font: inherit; font-size: 0.92rem; color: var(--fg); border-radius: 0.9rem; border: 1px solid var(--border);
+  background-color: color-mix(in srgb, var(--bg) 70%, transparent); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ob-root .pl-coupon input::placeholder { color: var(--muted); text-transform: none; letter-spacing: 0; }
+.ob-root .pl-coupon input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent); }
+.ob-root .pl-coupon input[aria-invalid="true"] { border-color: #e11d48; }
+.ob-root .pl-coupon .w-ms-control { min-height: 2.75rem; border-radius: 0.9rem; }
+/* the currency search box sits outside a form field, so it needs the input look itself */
+.ob-root .pl-cur input {
+  padding-top: 0.6rem; padding-bottom: 0.6rem; font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--fg); border-radius: 0.8rem; border: 1px solid var(--border);
+  background-color: var(--card); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ob-root .pl-cur input::placeholder { color: var(--muted); font-weight: 400; }
+.ob-root .pl-cur input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 22%, transparent); }
+
+/* ---- facilities (FacilityPicker.tsx): one add-a-facility card, the added ones listed below ---- */
+.ob-root .fp { display: grid; gap: 0.9rem; min-width: 0; }
+.ob-root .fp-form { display: grid; gap: 0.9rem; padding: 1rem 1.05rem 1.05rem; border-radius: 1.1rem; border: 1px solid var(--border); background: color-mix(in srgb, var(--secondary) 55%, transparent); }
+.ob-root .fp-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.92rem; }
+.ob-root .fp-head svg { color: var(--primary-text); }
+.ob-root .fp-head span { margin-left: auto; font-size: 0.76rem; font-weight: 500; color: var(--muted); }
+.ob-root .fp-form .w-fields { gap: 0.85rem 0.9rem; }
+.ob-root .fp-form .o-field label { font-size: 0.8rem; }
+.ob-root .fp-actions { display: flex; justify-content: flex-end; }
+.ob-root .fp-actions .ob-btn { padding: 0.65rem 1.3rem; font-size: 0.88rem; }
+.ob-root .fp-msg { margin: 0; padding: 0.5rem 0.75rem; border-radius: 0.7rem; font-size: 0.82rem; color: #f87171; background: color-mix(in srgb, #e11d48 12%, transparent); }
+.ob-root .fp-full { margin: 0; padding: 0.75rem 0.9rem; border-radius: 0.9rem; font-size: 0.85rem; color: var(--fg); background: color-mix(in srgb, #f59e0b 12%, transparent); }
+.ob-root .fp-list { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.ob-root .fp-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0.9rem; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); }
+.ob-root .fp-ico { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 0.7rem; color: var(--primary-text); background: color-mix(in srgb, var(--primary) 14%, transparent); }
+.ob-root .fp-txt { flex: 1; min-width: 0; display: grid; }
+.ob-root .fp-txt b { font-size: 0.92rem; }
+.ob-root .fp-txt small { color: var(--muted); font-size: 0.78rem; overflow-wrap: anywhere; }
+.ob-root .fp-del { flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 0.7rem; border: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer; transition: color 0.2s, background 0.2s; }
+.ob-root .fp-del:hover { color: #f87171; background: color-mix(in srgb, #e11d48 12%, transparent); }
+@media (max-width: 520px) { .ob-root .fp-form .w-grid { grid-template-columns: 1fr; } }
+
+/* no plans on the server: only a contact card */
+.ob-root .pl-empty { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; padding: 1.1rem 1.2rem; border-radius: 1.1rem; border: 1px solid var(--border); background: color-mix(in srgb, var(--secondary) 60%, transparent); }
+.ob-root .pl-empty > svg { flex: none; color: var(--primary-text); }
+.ob-root .pl-empty > div { flex: 1 1 220px; min-width: 0; }
+.ob-root .pl-empty p { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--muted); }
+
+/* Contact us block under the plan list */
+.ob-root .pl-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.85rem 1.05rem; border-radius: 1.1rem; border: 1px dashed color-mix(in srgb, var(--primary) 45%, var(--border)); background: color-mix(in srgb, var(--primary) 5%, transparent); }
+.ob-root .pl-contact .pl-main { flex: 1 1 220px; }
+.ob-root .pl-contact .ob-btn { margin-left: auto; }

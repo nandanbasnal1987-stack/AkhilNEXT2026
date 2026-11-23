@@ -3,7 +3,7 @@
 import React from 'react';
 import SwiperGallery from "./SwiperGallery";
 
-const CultureSection = React.memo(() => {
+const CultureSection = React.memo(function CultureSection() {
   return (
     <section>
       <div className='container-fluid box-wrapper'>

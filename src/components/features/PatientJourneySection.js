@@ -5,7 +5,7 @@ const patientjour = "/images/img-miss.webp";
 const patientjourtwo = "/images/img-misstwo.webp";
 const patientjourthree = "/images/img-missthree.webp";
 
-const PatientJourneySection = React.memo(() => {
+const PatientJourneySection = React.memo(function PatientJourneySection() {
   return (
     <section className="box-whatall-prov-p-tb">
       <div className="container-fluid">
