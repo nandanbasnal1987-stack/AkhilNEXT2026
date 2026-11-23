@@ -49,10 +49,10 @@ export default function HeroSection() {
         <div className="shade"></div>
         <div className="copy">
           <h2 className="mb-2">
-            <img className="akhil-logo" src={logo} height="60" alt="Responsive image" />  <span>Clinic</span>
+            AUGASTAM<span>Clinic</span>
           </h2>
           <h1 className="in" style={{ "--d": "1" } as CSSProperties}>
-            <strong>AI-powered Clinic</strong> Management Software.
+            AI-powered Clinic Management Software
           </h1>
           <p className="lead in" style={{ "--d": "2" } as CSSProperties}>
             Everything a clinic will ever need, in one platform. Smarter conversations, complete

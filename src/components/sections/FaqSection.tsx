@@ -39,7 +39,7 @@ export default function FaqSection() {
   useFaq(ref);
 
   return (
-    <div className="merged-section" id="section-13" ref={ref}>
+    <div className="merged-section pt-5 pb-5" id="section-13" ref={ref}>
       <section className="faq" aria-labelledby="sec13-t">
         <div className="intro">
           <h2 id="sec13-t">

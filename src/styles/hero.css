@@ -200,10 +200,10 @@ h1.in strong {
     color: #3B89FC;
 }
 
-.copy h2{ color: #1C85CD; font-size: 74px;}
+.copy h2{ color: #1C85CD; font-size: 62px; display: flex; align-items: center;}
 
 .copy h2 span {
-    font-size: 45px;
+    font-size: 40px;
     background: #028ADE;
     color: #fff;
     font-weight: 100;

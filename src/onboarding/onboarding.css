@@ -262,7 +262,7 @@
 .ob-root .w-dialog {
   position: relative; display: flex; flex-direction: column; width: min(41.25rem, 100%); max-height: min(94dvh, 920px);
   border-radius: 1.6rem; border: 1px solid var(--border); overflow: hidden;
-  background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(22px);
+  background: #ffffff; backdrop-filter: blur(22px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); animation: w-pop 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .ob-root .w-inline { max-height: none; width: min(45rem, 100%); margin: 0 auto; overflow: visible; box-shadow: var(--shadow); background: var(--card); }

@@ -741,12 +741,12 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
                 ))}
               </div>
             </Field>
-            {/* <Field label="Number of Providers" htmlFor="w-number_of_providers" required error={err('number_of_providers')}>
+            {<Field label="Number of Providers" htmlFor="w-number_of_providers" required error={err('number_of_providers')}>
               <select id="w-number_of_providers" value={v.number_of_providers} onChange={set('number_of_providers')} onBlur={blur('number_of_providers')} aria-invalid={err('number_of_providers') ? true : undefined}>
                 <option value="">Select number of providers</option>
                 {PROVIDER_BANDS.map((b) => <option key={b.value} value={String(b.value)}>{b.label}</option>)}
               </select>
-            </Field> */}
+            </Field>}
           </div>
         </>
       );

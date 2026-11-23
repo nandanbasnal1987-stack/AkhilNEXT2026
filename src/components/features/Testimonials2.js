@@ -166,7 +166,7 @@ const Testimonials2 = () => {
 
       
 
-        <p className="testimonial-lead rise l3"><strong>15-Year Average Client Partnership</strong> <br></br> Built on trust. Sustained through performance.</p>
+        <p className="testimonial-lead rise l3"><strong style={{color:'#0074c0'}}>15-Year Average Client Partnership</strong> <br></br> Built on trust. Sustained through performance.</p>
 
         <div className="testimonial-foot rise l4">
           <span>Trusted Clinical Partners</span>
