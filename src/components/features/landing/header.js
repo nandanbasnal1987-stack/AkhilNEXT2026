@@ -40,7 +40,7 @@ const Header = () => {
                 <a href="tel:#" className="nav-link" style={{paddingRight: 0}}>
                     <img src={CallIcon} alt="call" />
                   <div>
-                    <p className="mb-0">Let's Talk!</p>
+                    <p className="mb-0">Let&apos;s Talk!</p>
                     <h6 className="mb-0">+1 999 999 9999</h6>
                   </div>
                 </a>

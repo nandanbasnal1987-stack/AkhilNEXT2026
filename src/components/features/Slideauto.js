@@ -73,7 +73,7 @@ function Slideauto() {
                 {
                     AData.map((value) => (
                         
-                            <img src={value.img} alt='image' />
+                            <img key={value.img} src={value.img} alt='image' />
                    
 
                     ))

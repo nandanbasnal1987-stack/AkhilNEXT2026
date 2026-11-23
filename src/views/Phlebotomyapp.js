@@ -109,7 +109,7 @@ function Phlebotomyapp() {
             <div className='box-Phlebo-got-left' data-aos="fade-up">
                 <h2>Got Questions? <br/>
                 We’ve Got You Covered</h2>
-                <p>Whether you're ready to transform your healthcare operations or just exploring, drop us a line we're listening.</p>
+                <p>Whether you&apos;re ready to transform your healthcare operations or just exploring, drop us a line we&apos;re listening.</p>
                 <div className='box-letfuture-inp mt-4' style={{marginLeft:'0'}}>
                       <InputWithSend />
                     </div>

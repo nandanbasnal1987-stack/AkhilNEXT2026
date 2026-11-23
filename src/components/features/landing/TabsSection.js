@@ -91,7 +91,7 @@ const TabsSection = () => {
           </h1>
           <img src="images/heading.png" alt="Section Divider" className="heading_divider" />
           <p className="pairagraph mt-2">
-            At Akhil Systems, we understand that every healthcare setup is different — that's why we offer adaptable <br />Hospital Information System and Electronic Medical Record Software tailored to your workflow and goals.
+            At Akhil Systems, we understand that every healthcare setup is different — that&apos;s why we offer adaptable <br />Hospital Information System and Electronic Medical Record Software tailored to your workflow and goals.
           </p>
         </div>
 
@@ -169,7 +169,7 @@ const TabsSection = () => {
                 <div className="top_content_heading text-center">
                   <img src="images/heading.png" alt="Section Divider" className="heading_divider" />
                   <p className="pairagraph mt-2">
-                    An Electronic Medical Record (EMR) Software and Clinical Dashboard <br />designed to enhance doctors' efficiency and decision-making.
+                    An Electronic Medical Record (EMR) Software and Clinical Dashboard <br />designed to enhance doctors&apos; efficiency and decision-making.
                   </p>
                 </div>
 

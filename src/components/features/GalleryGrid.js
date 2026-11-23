@@ -7,7 +7,7 @@ function GalleryGrid({ items, onImageClick }) {
     <div className="grid-container mt-5">
 
         <h2>A timeline of progress, innovation, and trust—driving meaningful change in <br /> healthcare for over three decades</h2>
-        <div class="grid">
+        <div className="grid">
       {items.map((item, index) => (
         <div
           key={index}

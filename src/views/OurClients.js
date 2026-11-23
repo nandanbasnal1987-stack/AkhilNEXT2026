@@ -34,81 +34,83 @@ const sharda_hospital = "/images/clients/doms/sharda-hospital-akhilsystems.png";
 const mission_hospital = "/images/clients/doms/mission-hospital.png";
 
 
+
+function Tabs({
+  tabs = [],
+  defaultIndex = 0,
+  lazy = true,
+  className = "",
+}) {
+  const [active, setActive] = useState(defaultIndex);
+  const tabsRef = useRef([]);
+
+  useEffect(() => {
+    if (tabsRef.current[active]) tabsRef.current[active].focus();
+  }, [active]);
+
+  function onKeyDown(e) {
+    const max = tabs.length - 1;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setActive((i) => (i === max ? 0 : i + 1));
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setActive((i) => (i === 0 ? max : i - 1));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActive(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setActive(max);
+    }
+  }
+
+  return (
+    <div className={`w-full ${className}`}>
+      <div role="tablist" aria-label="Sample Tabs" className="box-tab-btn">
+        {tabs.map((t, i) => (
+          <button
+            key={t.id ?? i}
+            ref={(el) => (tabsRef.current[i] = el)}
+            role="tab"
+            aria-selected={active === i}
+            aria-controls={`panel-${t.id ?? i}`}
+            id={`tab-${t.id ?? i}`}
+            tabIndex={active === i ? 0 : -1}
+            onKeyDown={onKeyDown}
+            onClick={() => setActive(i)}
+            className={`box-tabtn
+              ${active === i ? "bg-indigo-600 text-white shadow-lg" : "bg-white text-gray-700 border"}`}
+          >
+            <div className="flex items-center gap-2">
+              {t.icon ? <span className="w-4 h-4">{t.icon}</span> : null}
+              <span className="text-sm font-medium">{t.title}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <div>
+        {tabs.map((t, i) => (
+          <section
+            key={t.id ?? i}
+            role="tabpanel"
+            id={`panel-${t.id ?? i}`}
+            aria-labelledby={`tab-${t.id ?? i}`}
+            hidden={active !== i}
+            className={`box-ourclient-logo ${active === i ? "block" : "hidden"}`}
+          >
+            {lazy ? (active === i ? t.content : null) : t.content}
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function OurClients() {
 
 
-  function Tabs({
-    tabs = [],
-    defaultIndex = 0,
-    lazy = true,
-    className = "",
-  }) {
-    const [active, setActive] = useState(defaultIndex);
-    const tabsRef = useRef([]);
-
-    useEffect(() => {
-      if (tabsRef.current[active]) tabsRef.current[active].focus();
-    }, [active]);
-
-    function onKeyDown(e) {
-      const max = tabs.length - 1;
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        setActive((i) => (i === max ? 0 : i + 1));
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        setActive((i) => (i === 0 ? max : i - 1));
-      } else if (e.key === "Home") {
-        e.preventDefault();
-        setActive(0);
-      } else if (e.key === "End") {
-        e.preventDefault();
-        setActive(max);
-      }
-    }
-
-    return (
-      <div className={`w-full ${className}`}>
-        <div role="tablist" aria-label="Sample Tabs" className="box-tab-btn">
-          {tabs.map((t, i) => (
-            <button
-              key={t.id ?? i}
-              ref={(el) => (tabsRef.current[i] = el)}
-              role="tab"
-              aria-selected={active === i}
-              aria-controls={`panel-${t.id ?? i}`}
-              id={`tab-${t.id ?? i}`}
-              tabIndex={active === i ? 0 : -1}
-              onKeyDown={onKeyDown}
-              onClick={() => setActive(i)}
-              className={`box-tabtn
-                ${active === i ? "bg-indigo-600 text-white shadow-lg" : "bg-white text-gray-700 border"}`}
-            >
-              <div className="flex items-center gap-2">
-                {t.icon ? <span className="w-4 h-4">{t.icon}</span> : null}
-                <span className="text-sm font-medium">{t.title}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        <div>
-          {tabs.map((t, i) => (
-            <section
-              key={t.id ?? i}
-              role="tabpanel"
-              id={`panel-${t.id ?? i}`}
-              aria-labelledby={`tab-${t.id ?? i}`}
-              hidden={active !== i}
-              className={`box-ourclient-logo ${active === i ? "block" : "hidden"}`}
-            >
-              {lazy ? (active === i ? t.content : null) : t.content}
-            </section>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   
 

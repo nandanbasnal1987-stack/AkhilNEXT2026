@@ -241,7 +241,7 @@ export default function Home() {
                 <h2>Solutions For Healthcare Businesses of All Size</h2>
                 <p>
                   <span>
-                    Akhil's intelligent suite — built for modern hospitals, agile
+                    Akhil&apos;s intelligent suite — built for modern hospitals, agile
                     clinics, and connected care networks — turns scattered data
                     into smart insights, empowering faster decisions and
                     elevating patient care from admission to discharge.

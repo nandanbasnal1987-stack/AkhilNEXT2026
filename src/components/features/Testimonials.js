@@ -138,11 +138,11 @@ const Testimonials = () => {
                     textAlign: 'left'
                   }}>
 
-                     <div class="media">
+                     <div className="media">
 
                       
    <img src={mocImg2} className='mr-3 border rounded-circle' width={60} />
-    <div class="media-body">
+    <div className="media-body">
        <h3 style={{
                           fontSize: '22px',
                           color: '#1a202c',
@@ -158,11 +158,11 @@ const Testimonials = () => {
                         }}>
                           {testimonial.role}
                         </p>
-      <p><span class="star-icon full">☆</span>
-<span class="star-icon full">☆</span>
-<span class="star-icon full">☆</span>
-<span class="star-icon half">☆</span>
-<span class="star-icon">☆</span></p>  
+      <p><span className="star-icon full">☆</span>
+<span className="star-icon full">☆</span>
+<span className="star-icon full">☆</span>
+<span className="star-icon half">☆</span>
+<span className="star-icon">☆</span></p>  
     </div>
     
     </div>

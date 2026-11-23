@@ -100,7 +100,7 @@ function Clinic() {
      <p>Increase in Compliance</p>
       </div>
       <div className='quote'>
-        <p><span>"</span>Patients stay better informed through integrated apps and timely health updates.”</p>
+        <p><span>&quot;</span>Patients stay better informed through integrated apps and timely health updates.”</p>
         <div className='author'>
           <img src={connectingImage3} alt='' />
           <div>

@@ -15,7 +15,7 @@ function Faqans(props)
             <h5>{props.qus}</h5>
 
             </div>
-            <div class="faq-head">
+            <div className="faq-head">
             <h3 className="text" onClick={()=>setShow(!show)}>{show? "-" : "+"}</h3>
             </div>
 

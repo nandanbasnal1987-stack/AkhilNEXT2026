@@ -18,7 +18,7 @@ function Decades() {
           
                 
                 {show && (
-                <div class="container-fluid topbar">
+                <div className="container-fluid topbar">
                    
                 <div className='row '>
 
@@ -32,7 +32,7 @@ function Decades() {
                         </div>
 
                         <div className='col-md-6'>
-                            <form class='d-flex justify-content-end'>
+                            <form className='d-flex justify-content-end'>
                                 <ul className='social-links'>
                                     <li><a href='#void'>Fb.</a></li>
                                     <li><a href='#void'>Inst.</a></li>

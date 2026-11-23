@@ -71,6 +71,84 @@ export function loadCities(): Promise<void> {
   return cityLoading;
 }
 
+export interface CountryInfo { name: string; iso: string; currency: string }
+let countriesP: Promise<CountryInfo[]> | null = null;
+
+/** All countries with their ISO code and currency (separate chunk, loaded on first use). India comes first. */
+export function loadCountries(): Promise<CountryInfo[]> {
+  countriesP ??= import('country-state-city').then((csc) => {
+    const all = csc.Country.getAllCountries().map((c) => ({ name: c.name, iso: c.isoCode, currency: c.currency }));
+    return [...all.filter((c) => c.iso === 'IN'), ...all.filter((c) => c.iso !== 'IN').sort((a, b) => a.name.localeCompare(b.name))];
+  });
+  return countriesP;
+}
+
+export interface World {
+  states: (countryIso: string) => { name: string; iso: string }[];
+  cities: (countryIso: string, stateIso: string) => string[];
+}
+let worldP: Promise<World> | null = null;
+
+/** States and cities of every country (country-state-city, separate chunk, loaded on first use). */
+export function loadWorld(): Promise<World> {
+  worldP ??= import('country-state-city').then((csc) => {
+    const st: Record<string, { name: string; iso: string }[]> = {};
+    const ci: Record<string, string[]> = {};
+    return {
+      states: (iso) => (st[iso] ??= csc.State.getStatesOfCountry(iso).map((s) => ({ name: s.name, iso: s.isoCode })).sort((a, b) => a.name.localeCompare(b.name))),
+      cities: (iso, stateIso) => (ci[iso + '-' + stateIso] ??= Array.from(new Set(csc.City.getCitiesOfState(iso, stateIso).map((c) => c.name))).sort((a, b) => a.localeCompare(b))),
+    };
+  });
+  return worldP;
+}
+
+export interface PinHit { country: string; state: string; city: string; source: 'india' | 'us' }
+
+const squash = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/** An Indian PIN (6 digits): state and district from India Post data (india-post-pincode), city matched to country-state-city's list. */
+async function pinIndia(pin: string): Promise<PinHit | null> {
+  if (!/^\d{6}$/.test(pin)) return null;
+  const { lookupPincode } = await import('india-post-pincode');
+  const hit = lookupPincode(pin);
+  if (!hit) return null;
+  const csc = await import('country-state-city');
+  const states = csc.State.getStatesOfCountry('IN');
+  const want = squash(hit.state);
+  const st = states.find((s) => squash(s.name) === want) ?? states.find((s) => squash(s.name).includes(want) || want.includes(squash(s.name)));
+  const cities = st ? Array.from(new Set(csc.City.getCitiesOfState('IN', st.isoCode).map((c) => c.name))) : [];
+  const d = squash(hit.district);
+  const city = cities.find((c) => squash(c) === d) ?? cities.find((c) => d.startsWith(squash(c)) || squash(c).startsWith(d)) ?? hit.district;
+  return { country: 'India', state: st?.name ?? hit.state, city, source: 'india' };
+}
+
+/** A US ZIP code (5 digits): city and state from the zipcodes package. */
+async function pinUS(pin: string): Promise<PinHit | null> {
+  if (!/^\d{5}$/.test(pin)) return null;
+  const mod = await import('zipcodes');
+  const z = (mod.default ?? (mod as unknown as typeof mod.default)).lookup(pin);
+  if (!z) return null;
+  const csc = await import('country-state-city');
+  const st = csc.State.getStateByCodeAndCountry(z.state, 'US');
+  return { country: 'United States', state: st?.name ?? z.state, city: z.city, source: 'us' };
+}
+
+/**
+ * Looks a postal code up offline and returns the country, state and city it belongs to (India and the United States have data).
+ * The applicant's current country is tried first; another country is only suggested when `allowSwitch` (the applicant has not chosen one by hand).
+ */
+export async function lookupPin(raw: string, country: string, allowSwitch: boolean): Promise<PinHit | null> {
+  const pin = raw.replace(/\s+/g, '');
+  const order: (() => Promise<PinHit | null>)[] = [];
+  if (isIndia(country)) { order.push(() => pinIndia(pin)); if (allowSwitch) order.push(() => pinUS(pin)); }
+  else if (country === 'United States') { order.push(() => pinUS(pin)); if (allowSwitch) order.push(() => pinIndia(pin)); }
+  else if (allowSwitch) order.push(() => pinIndia(pin), () => pinUS(pin));
+  for (const run of order) {
+    try { const hit = await run(); if (hit) return hit; } catch { /* data not available: leave the fields as they are */ }
+  }
+  return null;
+}
+
 export const stateNames = (): string[] => STATES.map(([name]) => name);
 
 export const citiesOf = (state: string): string[] => {
@@ -87,8 +165,15 @@ function statesOfPin(pin: string): string[] {
 }
 
 /** Returns an error text, or undefined when the PIN is fine (or cannot be judged yet). */
-export function pinError(pin: string, state: string): string | undefined {
+export const PIN_RE_OTHER = /^[A-Za-z0-9][A-Za-z0-9 -]{2,9}$/;
+export const CITY_RE_OTHER = /^[\p{L}][\p{L}\p{M} .'()-]{1,79}$/u;
+
+/** "India" (the default) uses the Indian rules; "Others" accepts any country's postal code, city and international phone number. */
+export const isIndia = (country: string): boolean => (country || 'India') === 'India';
+
+export function pinError(pin: string, state: string, country = 'India'): string | undefined {
   const p = pin.trim();
+  if (!isIndia(country)) return PIN_RE_OTHER.test(p) ? undefined : 'Enter a valid postal code (3-10 letters or digits).';
   if (!PIN_RE_IN.test(p)) return 'Enter a valid 6-digit PIN code.';
   if (!rangesOf || !state) return undefined;
   const known = rangesOf[state];
@@ -101,12 +186,20 @@ export function pinError(pin: string, state: string): string | undefined {
   return prefixes.has(p.slice(0, 2)) ? undefined : `This PIN code does not match ${state}. Check the state or the PIN.`;
 }
 
-export function cityError(city: string): string | undefined {
+export function cityError(city: string, country = 'India'): string | undefined {
+  if (!isIndia(country)) return CITY_RE_OTHER.test(city.trim()) ? undefined : 'Enter a valid city name (letters only).';
   return CITY_RE.test(city.trim()) ? undefined : 'Enter a valid city name (letters only).';
 }
 
 /** Indian numbers may be typed with or without +91. */
-export function phoneError(phone: string): string | undefined {
+export function phoneError(phone: string, country = 'India'): string | undefined {
+  if (!isIndia(country)) {
+    const t = phone.trim();
+    const intl = parsePhoneNumberFromString(t);
+    if (intl?.isValid()) return undefined;
+    const digits = t.replace(/\D/g, '');
+    return digits.length >= 7 && digits.length <= 15 && /^[+\d][\d\s().-]*$/.test(t) ? undefined : 'Enter a valid phone number with the country code, for example +1 415 555 0100.';
+  }
   const parsed = parsePhoneNumberFromString(phone.trim(), 'IN');
   return parsed?.isValid() ? undefined : 'Enter a valid phone number, for example 98765 43210 or +91 98765 43210.';
 }

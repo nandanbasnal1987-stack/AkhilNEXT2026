@@ -33,6 +33,9 @@ export const metadata = {
   other: {
     'geo.region': 'IN',
     'geo.position': '28.4913771,76.9947307',
+    // Dev only: the Dark Reader extension rewrites inline styles/attributes before React hydrates,
+    // which floods the dev terminal with hydration diffs. Production pages are unaffected.
+    ...(process.env.NODE_ENV !== 'production' ? { 'darkreader-lock': 'true' } : {}),
   },
 };
 

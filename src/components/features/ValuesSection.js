@@ -6,7 +6,7 @@ const valueImg = "/images/our-values-image.webp";
 const gridImage3 = "/images/our-values-image2.webp";
 const gridImage4 = "/images/our-values-image3.webp";
 
-const ValuesSection = React.memo(() => {
+const ValuesSection = React.memo(function ValuesSection() {
   const [activeValue, setActiveValue] = useState(0);
 
   const valueImages = [
@@ -52,7 +52,7 @@ const ValuesSection = React.memo(() => {
                   <span>Personal Accountability</span>
                 </h2>
                 <p>
-                  We don't wait to be told we take charge. Every individual at Akhil Systems owns their outcomes.
+                  We don&apos;t wait to be told we take charge. Every individual at Akhil Systems owns their outcomes.
                 </p>
               </li>
 
@@ -65,7 +65,7 @@ const ValuesSection = React.memo(() => {
                   <span>Will to Win</span>
                 </h2>
                 <p>
-                  Winning isn't just a goal it's a mindset. At Akhil Systems we push boundaries.
+                  Winning isn&apos;t just a goal it&apos;s a mindset. At Akhil Systems we push boundaries.
                 </p>
               </li>
             </ul>
