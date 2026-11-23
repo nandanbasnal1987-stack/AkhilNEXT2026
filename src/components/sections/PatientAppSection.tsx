@@ -93,7 +93,7 @@ export default function PatientAppSection() {
                           </span>
                         </div>
                         <div className="h">
-                          What are you looking for?
+                         dd What are you looking for?
                         </div>
                         <div className="s">
                           Get Instant Consultation with Health Experts

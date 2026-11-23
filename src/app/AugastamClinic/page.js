@@ -27,6 +27,8 @@ export const metadata = {
     "Connect your clinic's essential tools in one place, so your team can access the systems they need without constantly switching between apps.",
 };
 
+
+
 export default function AugastamClinicPage() {
   return (
     <>

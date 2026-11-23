@@ -24,7 +24,7 @@ background-image:linear-gradient(90deg,transparent calc(25.5% - .5px),var(--line
 #section-10 .lock.closed .sh{transform:none}
 #section-10 .lock.peek .sh{transform:translateY(-10px) rotate(-6deg)}
 #section-10 .sh path{fill:none}
-#section-10 .pill{position:absolute;left:18px;width:321px;height:43px;border-radius:22px;border:1.5px solid var(--edge);background:linear-gradient(90deg,var(--p1),var(--p2) 45%,var(--p3));box-shadow:0 6px 18px rgba(170,120,200,.18);display:flex;align-items:center;gap:13px;padding-left:28px;font-size:13.5px;color:var(--pt);opacity:0;translate:0 36px;cursor:default;
+#section-10 .pill{position:absolute;left:18px;width:321px;height:43px;border-radius:22px;border:1.5px solid var(--edge);background:linear-gradient(90deg,var(--p1),var(--p2) 45%,var(--p3));box-shadow:0 6px 18px rgba(170,120,200,.18);display:flex;align-items:center;gap:13px;padding-left:20px;font-size:10px;color:var(--pt);opacity:0;translate:0 36px;cursor:default;
 transition:opacity .6s,translate .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s,scale .3s}
 #section-10 .lock.in .pill{opacity:1;translate:0 0;transition-delay:calc(var(--i)*130ms),calc(var(--i)*130ms),0s,0s}
 #section-10 .lock.in .pill:hover{translate:-10px 0;scale:1.035;box-shadow:0 12px 28px rgba(170,100,210,.38);transition-delay:0s}

@@ -219,7 +219,7 @@ function TalkToExpertModal({ show, onClose }) {
 
             <div className="col-12 mt-3">
               <label>
-                What are you looking for?{" "}
+                ddWhat are you looking for?{" "}
                 <span style={starStyle("message")}>*</span>
               </label>
               <textarea

@@ -12,7 +12,7 @@ type CSSVars = React.CSSProperties & {
 const SUMMARY_ONE =
   "RITIKA is a 31-year-old female at a current outpatient visit. The highest-priority problem is Salmonella sepsis, coded and unconfirmed.";
 const SUMMARY_TWO =
-  "Tuberculous neuritis (2025), endometrial carcinoma (2025), and active hypertension (2026) are on record. PCOS needs monitoring and follow-up.";
+  "Tuberculous neuritis (2025), endometrial carcinoma (2025), and active hypertension (2026) are on record. PCOS needs monitoring and follow-up. Tuberculous neuritis (2025), endometrial carcinoma (2025), and active hypertension (2026) are on record. PCOS needs monitoring and follow-up.";
 const SPEECH =
   "Penicillin — rash. Peanuts — mild swelling. No known latex allergy.";
 

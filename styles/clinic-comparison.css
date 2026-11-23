@@ -343,8 +343,7 @@
 
   background: linear-gradient(
     135deg,
-    var(--cc-accent2),
-    var(--cc-accent)
+    var(--cc-accent2)
   );
 
   box-shadow: 0 0 0 0 var(--cc-glow);

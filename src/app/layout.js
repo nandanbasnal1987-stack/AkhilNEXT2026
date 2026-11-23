@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import DiwaliDecor from '@/components/diwali-decor/DiwaliDecor';
 
+
 // CSS order matches the old index.js/App.js: site styles first, Bootstrap after.
 import '@/styles/global.css';
 import '@/styles/landing.css';
