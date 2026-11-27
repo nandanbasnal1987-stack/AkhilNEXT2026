@@ -2589,3 +2589,16 @@ body{margin:0}
     transform: none;
   }
 }
+
+
+@media screen and (max-width:579px) {
+  section.grid { padding: 0;}
+  section.head.rv.on { padding: 0;}
+  #section-5 .tabs { grid-template-columns: repeat(1, 1fr) !important; height: auto !important;}
+   #section-5 .tab { padding: 5px 10px !important;}
+  #section-5 .ind { background: none !important; box-shadow: none !important; }
+  #section-5 .right {
+    width: 100% !important;
+    position: inherit !important; top: auto !important; right: 0 !important; 
+}
+}

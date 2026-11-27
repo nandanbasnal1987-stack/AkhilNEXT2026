@@ -15,7 +15,7 @@ export default function PrivacySection() {
         <div className="canvas">
           <div className="copy">
             <h1>
-              Manage your practice securely with built in layers of privacy & protection
+              Manage your practice<br></br> securely with built in layers of<br></br> privacy & protection
             </h1>
           </div>
           <button className="try" data-onboard data-onboard-source="clinic-try-free">
