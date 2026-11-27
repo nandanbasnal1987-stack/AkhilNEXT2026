@@ -1012,7 +1012,7 @@ export default function OnboardWizard({ variant, initialPlan, onClose, onContact
           <button type="submit" className="ob-btn ob-btn-primary" disabled={busy}>
             {busy
               ? <><Loader2 size={16} className="spin" /> {step < 4 ? 'Saving…' : 'Submitting…'}</>
-              : step < 4 ? <>Next <ArrowRight size={16} /></> : <>Submit application <ArrowRight size={16} /></>}
+              : step < 4 ? <>Next </> : <>Submit application <ArrowRight size={16} /></>}
           </button>
         </div>
       </form>
